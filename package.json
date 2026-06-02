@@ -1,0 +1,11 @@
+{
+  "name": "ai-greentick-unified",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-all": "npm install --prefix \"copy-of-ai-greentick\" && npm install --prefix \"AiGreenTick Admin\"",
+    "build-all": "npm run build --prefix \"copy-of-ai-greentick\" && npm run build --prefix \"AiGreenTick Admin\"",
+    "build": "npm run install-all && npm run build-all",
+    "start": "node \"AiGreenTick Admin/server.js\""
+  }
+}

@@ -1,0 +1,1017 @@
+{
+  "hero": {
+    "badge": "WHATSAPP MARKETING SUITE FOR MODERN TEAMS",
+    "title": "Grow Faster With\nSmarter WhatsApp Conversations",
+    "subtitle": "Send high-delivery broadcasts, manage every chat in a shared inbox and automate replies with AI chatbots. Built for agencies and D2C brands.",
+    "primaryCta": "Start Free Trial",
+    "secondaryCta": "Book A Demo"
+  },
+  "plans": [
+    {
+      "name": "Starter",
+      "priceMonthly": "2,499",
+      "priceYearly": "23,999",
+      "isCustom": false,
+      "desc": "Good for individuals and small businesses who are just starting out with WhatsApp marketing.",
+      "button": "Get started",
+      "isPrimary": false,
+      "featuresHeader": "Key features",
+      "features": [
+        "1 WhatsApp Number",
+        "Shared Inbox (3 users)",
+        "Basic Broadcasts",
+        "Template Manager",
+        "Basic Automation",
+        "Basic Reporting"
+      ]
+    },
+    {
+      "name": "Growth",
+      "priceMonthly": "5,999",
+      "priceYearly": "57,999",
+      "isCustom": false,
+      "desc": "Highly recommended for small teams who seek to upgrade their time & performance.",
+      "button": "Get started",
+      "isPrimary": true,
+      "badge": "30 days free trial",
+      "featuresHeader": "Free plan features, plus:",
+      "features": [
+        "10 Users Included",
+        "Advanced Segmentation",
+        "Unlimited Automation",
+        "AI Chatbot Builder",
+        "CRM Integrations",
+        "Full Analytics",
+        "Priority Support"
+      ]
+    },
+    {
+      "name": "Scale",
+      "priceMonthly": "Custom",
+      "priceYearly": "Custom",
+      "isCustom": true,
+      "desc": "Robust scheduling for larger teams looking to have more control, privacy & security.",
+      "button": "Contact us",
+      "isPrimary": false,
+      "featuresHeader": "Organization plan features, plus:",
+      "features": [
+        "Unlimited Users",
+        "Dedicated CSM",
+        "Custom API Setup",
+        "SLA Support",
+        "Enterprise Security",
+        "Custom Reporting",
+        "Multi-brand Support"
+      ]
+    }
+  ],
+  "blogPosts": [
+    {
+      "id": 1,
+      "title": "The Key to Aligning Teams and Boosting Efficiency",
+      "excerpt": "Discover strategies to streamline communication and ensure everyone is on the same page using advanced productivity tools.",
+      "category": "Business Growth",
+      "date": "2023-10-24",
+      "theme": "blue",
+      "visualType": "productivity",
+      "author": "Sarah Jenkins",
+      "readTime": "5 min read",
+      "content": "Manual processes are the silent killers of productivity. From data entry to repetitive follow-ups, these tasks consume valuable time that could be spent on strategic initiatives. By integrating smart automation into your workflow, you free up your team to focus on what really matters: creative problem-solving and customer relationships. Adopting new tools can be challenging. Start small. Identify one bottleneck in your current process—perhaps it's the weekly status report or customer inquiry routing—and apply a targeted solution. Measure the impact, celebrate the win, and then expand."
+    },
+    {
+      "id": 2,
+      "title": "How Dynamic Workflows Keep Teams Moving Forward",
+      "excerpt": "Learn how to adapt your processes in real-time to meet changing project demands and keep your team agile.",
+      "category": "Automation",
+      "date": "2023-10-20",
+      "theme": "purple",
+      "visualType": "workflow",
+      "author": "Mike Chen",
+      "readTime": "7 min read",
+      "content": "In today's fast-paced digital landscape, efficiency isn't just a goal—it's a necessity. Adaptability is crucial when deadlines shift and scope creeps. Dynamic workflows adjust to real-time project metrics, assigning task priorities automatically. This helps developers and project managers communicate changes instantly without waiting for stand-ups. Implementing these dynamic features ensures high agility, allowing teams to deliver value consistently even under fluctuating demands."
+    },
+    {
+      "id": 3,
+      "title": "Mastering Task Prioritization in Fast-Paced Teams",
+      "excerpt": "Tips and tricks for identifying what matters most when everything feels urgent, ensuring focused execution.",
+      "category": "Productivity",
+      "date": "2023-10-15",
+      "theme": "pink",
+      "visualType": "prioritization",
+      "author": "Jessica Lee",
+      "readTime": "4 min read",
+      "content": "When every task is flagged high priority, nothing is. True prioritization requires evaluating each initiative's business value against complexity. Using simple frameworks like Eisenhower's matrix allows teams to focus efforts effectively. Our study shows that teams focusing on 2-3 key goals per sprint complete projects 35% faster than teams trying to manage multiple parallel tasks."
+    },
+    {
+      "id": 4,
+      "title": "How Adaptive Workflows Empower Modern Teams",
+      "excerpt": "Flexibility is key. See how adaptive tools can help your team scale effectively without breaking processes.",
+      "category": "Business Growth",
+      "date": "2023-10-10",
+      "theme": "green",
+      "visualType": "adaptive",
+      "author": "David Wilson",
+      "readTime": "6 min read",
+      "content": "Scaling a business requires processes that expand seamlessly. Rigid workflows break when volume doubles. Adaptive tools adjust to data patterns, enabling custom rules per client tier. By matching automated responses to customer value, agencies can sustain high satisfaction rates without overloading support personnel."
+    },
+    {
+      "id": 5,
+      "title": "Unlocking Transparency for Effective Teamwork",
+      "excerpt": "Building trust through clear visibility into project status and team responsibilities, removing bottlenecks.",
+      "category": "Customer Engagement",
+      "date": "2023-10-05",
+      "theme": "orange",
+      "visualType": "transparency",
+      "author": "Emily Watson",
+      "readTime": "5 min read",
+      "content": "Trust is built when progress is visible. Centralizing project status avoids tracking down updates and boosts accountability. When transparency becomes the default, team members resolve conflicts faster. Shared dashboards and open backlogs keep stakeholders satisfied and give designers clear directions."
+    },
+    {
+      "id": 6,
+      "title": "Keeping Teams Focused in a Distracted World",
+      "excerpt": "Practical advice for minimizing interruptions and maximizing deep work time for your team.",
+      "category": "Productivity",
+      "date": "2023-09-28",
+      "theme": "rose",
+      "visualType": "focus",
+      "author": "Robert Chang",
+      "readTime": "8 min read",
+      "content": "Context switching is a productivity drain. Research shows that it takes an average of 23 minutes to refocus after a distraction. Creating blocks of uninterrupted deep work time and silencing non-urgent channels is critical. Modern tools help by consolidating chats into single streams and summarizing key updates, keeping distraction levels to a minimum."
+    },
+    {
+      "id": 7,
+      "title": "WhatsApp Marketing 101: Getting Started",
+      "excerpt": "A complete guide to setting up your first broadcast list and understanding the WhatsApp Business API.",
+      "category": "WhatsApp Marketing",
+      "date": "2023-09-20",
+      "theme": "blue",
+      "visualType": "productivity",
+      "author": "Sarah Jenkins",
+      "readTime": "10 min read",
+      "content": "WhatsApp boasts a 98% open rate, making it one of the most powerful direct channels. Setting up involves securing a Meta Business account, verifying your phone number, and obtaining API credentials. Start with clear templates for opt-in consent to ensure high delivery rates and prevent number blocking."
+    },
+    {
+      "id": 8,
+      "title": "Automating Customer Support with AI Chatbots",
+      "excerpt": "Reduce response times by 80% by implementing smart flows for common customer queries.",
+      "category": "Automation",
+      "date": "2023-09-15",
+      "theme": "purple",
+      "visualType": "workflow",
+      "author": "Mike Chen",
+      "readTime": "6 min read",
+      "content": "AI Chatbots can handle up to 80% of routine support queries, such as package tracking or FAQ responses. By linking your chatbot to backend APIs, you provide customers with real-time support. Save human agents for high-value interactions, resulting in faster resolution times and reduced support expenses."
+    },
+    {
+      "id": 9,
+      "title": "E-commerce Strategies for the Holiday Season",
+      "excerpt": "How to leverage WhatsApp broadcasts to drive sales during peak shopping periods.",
+      "category": "Business Growth",
+      "date": "2023-09-10",
+      "theme": "pink",
+      "visualType": "prioritization",
+      "author": "Jessica Lee",
+      "readTime": "5 min read",
+      "content": "Holiday seasons are highly competitive. WhatsApp broadcasts help cut through noisy email inboxes. Design targeted campaigns with exclusive discount codes and direct cart checkouts. Personalized broadcasts based on past purchase history achieve conversion rates that are 4x higher than generic promotions."
+    }
+  ],
+  "socialProof": {
+    "heading": "Trusted by Agencies, D2C Brands and Service Companies",
+    "desc": "From early stage startups to established brands, teams use AI Greentick to manage WhatsApp conversations at scale.",
+    "companies": [
+      {
+        "name": "Dell",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1024px-Dell_Logo.svg.png",
+        "h": "h-8"
+      },
+      {
+        "name": "Microsoft",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png",
+        "h": "h-8"
+      },
+      {
+        "name": "Amazon",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png",
+        "h": "h-8"
+      },
+      {
+        "name": "VMware",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Vmware.svg/2560px-Vmware.svg.png",
+        "h": "h-6"
+      },
+      {
+        "name": "IBM",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png",
+        "h": "h-8"
+      },
+      {
+        "name": "PhonePe",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/1200px-PhonePe_Logo.svg.png",
+        "h": "h-10"
+      }
+    ]
+  },
+  "problemSolution": {
+    "badge": "THE PROBLEM & THE SOLUTION",
+    "probTitle": "The Usual Problems with WhatsApp",
+    "probDesc": "Most businesses struggle with manual processes that don't scale.",
+    "solTitle": "How AI Greentick Helps Your Team Win",
+    "solDesc": "Turn WhatsApp into your most profitable revenue channel with tools built for growth.",
+    "problems": [
+      {
+        "title": "Multiple People, One Phone",
+        "desc": "Sharing a single physical device means missed chats, slow replies, and zero accountability."
+      },
+      {
+        "title": "No Visibility on Sales",
+        "desc": "You have no idea which leads are converting or how your support team is performing."
+      },
+      {
+        "title": "Slow Manual Broadcasts",
+        "desc": "Copy-pasting messages to hundreds of customers is tedious, risky, and gets you blocked."
+      }
+    ],
+    "solutions": [
+      {
+        "title": "Shared Team Inbox",
+        "desc": "Access one WhatsApp number from multiple devices. Assign chats, add private notes, and tag teammates."
+      },
+      {
+        "title": "Smart Analytics",
+        "desc": "See exactly who opened, clicked, and replied to your broadcasts. Use data to improve campaigns."
+      },
+      {
+        "title": "24/7 Automation",
+        "desc": "Let AI bots handle FAQs, qualify leads, and schedule appointments while your team sleeps."
+      }
+    ]
+  },
+  "keyFeatures": {
+    "badge": "PRODUCT OVERVIEW",
+    "title": "Everything You Need To Win on WhatsApp",
+    "desc": "AI Greentick bundles the key tools your team needs to turn WhatsApp into a serious growth channel.",
+    "features": [
+      {
+        "title": "WhatsApp Broadcasts",
+        "desc": "Send approved promotional and transactional campaigns to thousands with high delivery and clear reporting."
+      },
+      {
+        "title": "Shared Team Inbox",
+        "desc": "Manage every conversation from one number with assignments, notes and response tracking."
+      },
+      {
+        "title": "AI Chatbot Builder",
+        "desc": "Build flows without coding to automate FAQs, lead capture and routing."
+      },
+      {
+        "title": "Campaign Manager",
+        "desc": "Track delivery, clicks, replies and conversions across every WhatsApp campaign."
+      },
+      {
+        "title": "WhatsApp Automation",
+        "desc": "Trigger personalised messages based on time, actions, tags and customer journeys."
+      },
+      {
+        "title": "Integrations",
+        "desc": "Connect AI Greentick with Shopify, Zapier, APIs and your existing tech stack."
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "How AI Greentick works",
+    "desc": "Getting started with AI Greentick is simple. Your team can start sending campaigns and handling chats in just a few steps.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Connect Your WhatsApp API",
+        "desc": "We help you onboard to the official WhatsApp Business API, connect your number and verify your brand. Our team guides you through the process so you go live smoothly."
+      },
+      {
+        "number": "2",
+        "title": "Set Up Broadcasts, Inbox and Bots",
+        "desc": "Import your contacts, create your first broadcast, invite your team to the shared inbox and build basic chatbot flows for common questions. Start small and expand as you learn."
+      },
+      {
+        "number": "3",
+        "title": "Track, Optimise and Automate",
+        "desc": "Use the campaign manager and analytics to see what is working. Add automation rules for follow ups, reminders and re engagement. Keep improving your messaging based on real performance."
+      },
+      {
+        "number": "4",
+        "title": "Scale Across Teams",
+        "desc": "Add more teammates, plug in your CRM or store, and roll out AI Greentick across marketing, sales and support teams."
+      }
+    ]
+  },
+  "useCases": {
+    "badge": "USE CASES",
+    "title": "Built For Teams That Live on WhatsApp",
+    "desc": "Whether you are an agency handling many brands, a D2C business running campaigns or a service company managing leads, AI Greentick gives you the tools to stay organised and responsive.",
+    "useCases": [
+      {
+        "tag": "Marketing Teams",
+        "title": "Travel & Hospitality",
+        "desc": "Run product launches, festival sales and event promotions with targeted WhatsApp broadcasts."
+      },
+      {
+        "tag": "Sales Teams",
+        "title": "Education & EdTech",
+        "desc": "Capture leads from forms, reply faster with templates and automate follow ups."
+      },
+      {
+        "tag": "Support Teams",
+        "title": "Spa & Salons",
+        "desc": "Handle queries from one shared inbox and keep customers updated on bookings."
+      },
+      {
+        "tag": "Agencies",
+        "title": "Agencies & B2B",
+        "desc": "Manage multiple client projects, track performance and share clear reports."
+      }
+    ]
+  },
+  "metrics": {
+    "badge": "OUR PERFORMANCE",
+    "title": "See The Difference on Your Metrics",
+    "desc": "Teams using AI Greentick report better response times and higher engagement on WhatsApp compared to using manual methods.",
+    "items": [
+      {
+        "value": "2x",
+        "label": "Faster Replies",
+        "desc": "When using shared inbox and templates compared to manual replies."
+      },
+      {
+        "value": "98%",
+        "label": "Higher Engagement",
+        "desc": "High open and read rates. WhatsApp typically sees much stronger engagement than email for many audiences."
+      },
+      {
+        "value": "100%",
+        "label": "Better Team Visibility",
+        "desc": "Single view of all chats. No more switching devices or asking who replied to which customer."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Loved by Businesses Worldwide",
+    "desc": "See what over 500+ businesses are saying about their experience with AI Greentick.",
+    "row1": [
+      {
+        "name": "Mila McSabbu",
+        "role": "Freelance Designer",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "We test and compare the best project management software for collaborating with a team, hitting deadlines."
+      },
+      {
+        "name": "Robert Fox",
+        "role": "Marketing Manager",
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "AI Greentick transformed how we handle customer support. The shared inbox is a game changer for our remote team."
+      },
+      {
+        "name": "Jenny Wilson",
+        "role": "Sales Director",
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "Our response rates doubled within the first week. The automated broadcasts allow us to reach thousands instantly."
+      },
+      {
+        "name": "Kristin Watson",
+        "role": "Operations Head",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "Finally, a WhatsApp tool that actually works for teams. The analytics help us understand exactly what our customers want."
+      }
+    ],
+    "row2": [
+      {
+        "name": "Guy Hawkins",
+        "role": "CEO, TechStart",
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "We test and compare the best project management software for collaborating with a team, hitting deadlines."
+      },
+      {
+        "name": "Courtney Henry",
+        "role": "Product Designer",
+        "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "The chatbot builder is incredibly intuitive. We set up our FAQ bot in under an hour without any coding knowledge."
+      },
+      {
+        "name": "Arlene McCoy",
+        "role": "Ecommerce Owner",
+        "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "Managing orders via WhatsApp used to be a nightmare. Now it's our smoothest channel for sales and support."
+      },
+      {
+        "name": "Darrell Steward",
+        "role": "Support Lead",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+        "text": "Highly recommended for any business looking to scale their WhatsApp communication without losing the personal touch."
+      }
+    ]
+  },
+  "integrations": {
+    "title": "Works With Your Existing Tools",
+    "desc": "Connect AI Greentick with your store, CRM and internal tools so your WhatsApp data is never isolated.",
+    "items": [
+      {
+        "name": "Shopify",
+        "desc": "Sync orders, send delivery updates and recover abandoned carts automatically."
+      },
+      {
+        "name": "Zapier",
+        "desc": "Connect with 5000+ apps to automate workflows without writing a single line of code."
+      },
+      {
+        "name": "HubSpot",
+        "desc": "Sync contacts, log WhatsApp conversations and trigger workflows from your CRM."
+      },
+      {
+        "name": "Salesforce",
+        "desc": "Manage enterprise leads and support tickets directly from your Salesforce dashboard."
+      },
+      {
+        "name": "WooCommerce",
+        "desc": "Instant order notifications and COD confirmation messages for your WordPress store."
+      },
+      {
+        "name": "Google Sheets",
+        "desc": "Export leads, track campaign data and manage contacts in real-time spreadsheets."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "badge": "Ready to scale?",
+    "title": "Turn WhatsApp Into Your Growth Channel",
+    "desc": "Join hundreds of high-growth brands using AI Greentick to simplify their WhatsApp strategy.",
+    "primaryCta": "Start Free Trial Today",
+    "secondaryCta": "Explore Plans"
+  },
+  "featuresPage": {
+    "hero": {
+      "badge": "WhatsApp Marketing Suite 2.0",
+      "title": "Everything You Need To\nGrow on WhatsApp",
+      "subtitle": "Launch campaigns, build automated flows, and manage team workflows at scale with the world's most intuitive official WhatsApp platform.",
+      "primaryCta": "Start Free Trial Today",
+      "secondaryCta": "Book A Demo",
+      "showcaseText": "Interactive Dashboard Preview"
+    },
+    "broadcastsDeepDive": {
+      "title": "High-Volume Broadcasts That Actually Deliver",
+      "desc": "Reach thousands of customers instantly. AI Greentick uses the official WhatsApp API to ensure your messages bypass spam filters and land directly in the chat.",
+      "features": [
+        "Personalized variables for every recipient",
+        "Interactive 'Call-to-Action' buttons",
+        "Template management with quick approval",
+        "Detailed analytics: Sent, Delivered, Read, Clicked"
+      ]
+    },
+    "teamInboxDeepDive": {
+      "title": "One Number, Infinite Team Members",
+      "desc": "Scale your customer support and sales without sharing physical phones. Our shared team inbox gives everyone a transparent view of all conversations.",
+      "features": [
+        "Assign chats to specific agents automatically",
+        "Add private internal notes for collaboration",
+        "Tag conversations for easy filtering",
+        "Set up automatic out-of-office replies"
+      ]
+    },
+    "allFeatures": {
+      "title": "Everything You Need In One Place",
+      "desc": "Powerful tools built into a single, unified interface.",
+      "items": [
+        {
+          "icon": "Zap",
+          "title": "Automation",
+          "desc": "Trigger personalized events based on customer actions.",
+          "color": "text-yellow-500"
+        },
+        {
+          "icon": "Globe",
+          "title": "Official API",
+          "desc": "Official Meta partner ensuring high compliance and safety.",
+          "color": "text-blue-500"
+        },
+        {
+          "icon": "ShieldCheck",
+          "title": "Data Security",
+          "desc": "Enterprise-grade encryption for all customer data.",
+          "color": "text-green-500"
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Analytics",
+          "desc": "Real-time dashboards for team and campaign performance.",
+          "color": "text-purple-500"
+        },
+        {
+          "icon": "Layers",
+          "title": "Integrations",
+          "desc": "Connect with Shopify, Zapier, Hubspot and more.",
+          "color": "text-orange-500"
+        },
+        {
+          "icon": "Smartphone",
+          "title": "Mobile App",
+          "desc": "Manage your inbox on the go with our dedicated apps.",
+          "color": "text-brand-600"
+        }
+      ]
+    },
+    "ctaFinal": {
+      "title": "Ready to Win on WhatsApp?",
+      "desc": "Join hundreds of growing brands using AI Greentick to simplify their customer communication.",
+      "buttonText": "Get Started Now"
+    },
+    "faqs": [
+      {
+        "q": "What is the official WhatsApp Business API?",
+        "a": "It is Meta's official API for medium and large businesses to communicate with their customers at scale. Unlike the personal WhatsApp app, it supports multiple users, automation, and broadcasting without number blocking risk."
+      },
+      {
+        "q": "Do you help with green tick verification?",
+        "a": "Yes! We guide and support you through the official Meta verification process to display the green tick verified badge next to your business name."
+      }
+    ]
+  },
+  "broadcastsPage": {
+    "hero": {
+      "title": "Send High Delivery\nWhatsApp Campaigns",
+      "desc": "Reach thousands instantly with personalised WhatsApp broadcasts equipped with interactive buttons (e.g. 'Call Now', 'Visit Website'). Promote offers, send reminders, share updates and drive conversions with better delivery.",
+      "primaryCta": "Start Sending Broadcasts",
+      "secondaryCta": "Book a Demo",
+      "badgeText": "Campaign Sent!",
+      "deliveryText": "98% Delivery Rate"
+    },
+    "smartAutomation": {
+      "badge": "Smart Automation",
+      "title": "Don't Let Broadcast Replies Overwhelm You",
+      "desc": "Sending a campaign to 5,000 customers? You might get hundreds of replies in minutes. Instead of manual handling, let our AI Chatbot instantly answer FAQs, qualify leads, and schedule appointments 24/7.",
+      "items": [
+        "Auto-reply to common questions (Price, Location, etc.)",
+        "Qualify interested leads before human handover",
+        "Book meetings or collect details automatically"
+      ],
+      "buttonText": "Explore Chatbot Builder"
+    },
+    "features": [
+      {
+        "title": "Higher Engagement Rates",
+        "desc": "90%+ open rates vs 20% email marketing"
+      },
+      {
+        "title": "Cost-Effective",
+        "desc": "Lower cost per message than SMS or email"
+      },
+      {
+        "title": "Global Reach",
+        "desc": "Reach customers in 180+ countries"
+      },
+      {
+        "title": "Compliance Guaranteed",
+        "desc": "Official WhatsApp Business API ensures compliance"
+      },
+      {
+        "title": "Interactive Buttons",
+        "desc": "Add 'Call Now', 'Visit Website' or 'Quick Reply' buttons to boost click-through rates."
+      },
+      {
+        "title": "Reduced Efforts",
+        "desc": "Automate sales & support on WhatsApp with a chatbot, saving your team time and effort."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is there a limit on how many messages I can send?",
+        "a": "The daily message limit depends on your WhatsApp Business API tier. It typically starts at 1,000 customers per day and scales to 10k, 100k, and unlimited as you maintain a good quality score."
+      },
+      {
+        "q": "Do I need to get templates approved before sending?",
+        "a": "Yes, WhatsApp requires template approval for business-initiated messages (broadcasts) to prevent spam. AI Greentick helps you create and submit templates for quick approval."
+      },
+      {
+        "q": "Can I import contacts from Excel or CSV?",
+        "a": "Absolutely. You can import contacts via CSV or Excel files. You can also segment them using tags (e.g., 'New Customer', 'VIP') for targeted campaigns."
+      },
+      {
+        "q": "Does AI Greentick support media in broadcasts?",
+        "a": "Yes! You can send images, videos, PDFs, and documents in your broadcast campaigns to make them more engaging."
+      },
+      {
+        "q": "How do I track campaign performance?",
+        "a": "Our dashboard provides real-time analytics including Sent, Delivered, Read, and Replied rates. You can also track button clicks if your template includes interactive buttons."
+      }
+    ],
+    "ctaFinal": {
+      "title": "Start Sending Smarter Broadcasts",
+      "desc": "Join thousands of businesses engaging their customers on WhatsApp with AI Greentick.",
+      "primaryCta": "Start Free Trial",
+      "secondaryCta": "Book a Demo"
+    }
+  },
+  "solutionsPage": {
+    "hero": {
+      "badge": "SOLUTIONS",
+      "title": "WhatsApp Solutions for Every Type of Business",
+      "subtitle": "Whether you run an ecommerce brand, a coaching centre, a service agency or a real estate business, AI Greentick helps you automate conversations, increase engagement and stay organised — all through WhatsApp.",
+      "primaryCta": "Explore Industry Solutions",
+      "secondaryCta": "Book a Demo"
+    },
+    "overview": {
+      "title": "Tailored WhatsApp Solutions for Your Industry",
+      "desc": "Different businesses use WhatsApp differently — sales conversations, order updates, lead qualification, support chats, class reminders, booking confirmations and more. AI Greentick adapts to the workflows that matter most to your team.",
+      "items": [
+        "Industry focused automation",
+        "Role based workflows",
+        "Easy to customise",
+        "Built for speed & scale"
+      ]
+    },
+    "industries": [
+      {
+        "title": "Ecommerce & D2C",
+        "desc": "Send automated abandoned cart recovery templates, order updates, shipping alerts, and promotional codes. Allow customers to browse your catalog and buy directly on WhatsApp."
+      },
+      {
+        "title": "Education & Coaching",
+        "desc": "Send class reminders, course details, timetable changes, test results, and fee notices. Automate lead qualification for trial classes using simple WhatsApp chatbots."
+      },
+      {
+        "title": "Real Estate & Housing",
+        "desc": "Capture leads from social ads instantly. Send property brochures, schedule site visits, and answer common questions about locations and floor plans 24/7."
+      },
+      {
+        "title": "Agencies & B2B Services",
+        "desc": "Collaborate on client chats from a single number. Share project updates, assign tasks, and keep communication organized without passing around physical phones."
+      },
+      {
+        "title": "Healthcare & Clinics",
+        "desc": "Let patients book appointments, receive doctor schedules, and get health tips on WhatsApp. Send automated appointment reminders to slash no-show rates."
+      },
+      {
+        "title": "Travel & Hospitality",
+        "desc": "Share flight bookings, hotel vouchers, local travel recommendations, and collect feedback. Answer booking modifications queries instantly with chatbots."
+      }
+    ],
+    "roles": [
+      {
+        "role": "Marketing Teams",
+        "title": "Drive More Conversion & High Delivery Campaigns",
+        "desc": "Traditional marketing channels like email are seeing lower engagement. WhatsApp broadcasts allow you to land directly in customer chats with high open and read rates.",
+        "items": [
+          "Send personalized broadcasts with user variables",
+          "Include interactive Call-to-Action buttons",
+          "Segment contacts using tags for targeted messaging",
+          "Track detailed analytics (sent, delivered, read, clicked)"
+        ]
+      },
+      {
+        "role": "Sales Teams",
+        "title": "Qualify Leads Faster & Boost Your Conversions",
+        "desc": "Speed to lead is critical. WhatsApp enables instant, real-time responses to lead queries, preventing them from going cold.",
+        "items": [
+          "Auto-qualify leads with conversational chatbots",
+          "Sync details instantly with your CRM stack",
+          "Use templates to reply instantly to common pricing queries",
+          "Collaborate with shared notes and assignments"
+        ]
+      },
+      {
+        "role": "Support Teams",
+        "title": "Handle Customer Issues Faster at Scale",
+        "desc": "Customers hate waiting in queues. Offer instant assistance right in their favorite messaging app.",
+        "items": [
+          "Resolve up to 80% of routine FAQs with chatbots",
+          "Manage all support requests in a shared team inbox",
+          "Ensure accountability with clear agent assignment tracking",
+          "Set automatic out-of-office schedules and messages"
+        ]
+      }
+    ],
+    "benefits": [
+      {
+        "title": "24/7 Availability",
+        "desc": "Never miss a customer query, even on weekends or holidays, thanks to smart chatbots."
+      },
+      {
+        "title": "Complete Team Transparency",
+        "desc": "Single team inbox ensures managers have full visibility into support quality and response times."
+      },
+      {
+        "title": "Enterprise Security",
+        "desc": "Meta verified API connection ensures complete privacy and secure customer communication."
+      }
+    ]
+  },
+  "aboutPage": {
+    "hero": {
+      "badge": "About AI Greentick",
+      "title": "We’re making WhatsApp work for business.",
+      "subtitle": "Simplifying communication for teams everywhere. Faster replies, smarter automation, and better customer relationships."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "quote": "To empower businesses with simple, powerful WhatsApp tools that automate communication and organize teams — without the complexity."
+    },
+    "story": {
+      "title": "Our Story",
+      "paragraphs": [
+        "It started with a simple observation: WhatsApp is where customers are, but businesses were struggling to keep up. Personal phones, scattered chats, and manual replies just weren't scaling.",
+        "We built AI Greentick to solve this. A single platform where teams can manage conversations, automate responses, and grow their business efficiently."
+      ]
+    },
+    "values": [
+      {
+        "title": "Simplicity",
+        "desc": "We turn complex communication problems into easy solutions."
+      },
+      {
+        "title": "Customer Focus",
+        "desc": "We build tools that solve real problems for real teams."
+      },
+      {
+        "title": "Innovation",
+        "desc": "We move fast, iterate quickly and embrace new ideas."
+      },
+      {
+        "title": "Integrity",
+        "desc": "Honesty, trust and clarity in everything we do."
+      }
+    ],
+    "stats": [
+      {
+        "label": "Active Businesses",
+        "value": "5,000+"
+      },
+      {
+        "label": "Messages Sent",
+        "value": "10M+"
+      },
+      {
+        "label": "Uptime",
+        "value": "99.9%"
+      },
+      {
+        "label": "Countries",
+        "value": "12+"
+      }
+    ],
+    "cta": {
+      "title": "Ready to get started?",
+      "primaryBtn": "Start Free Trial",
+      "secondaryBtn": "Contact Sales"
+    }
+  },
+  "careersPage": {
+    "hero": {
+      "badge": "CAREERS",
+      "title": "Join Us in Building the Future of WhatsApp Automation",
+      "subtitle": "At AI Greentick, we’re creating tools that help thousands of businesses communicate better. If you're passionate about product, technology and customer experience — you’ll feel right at home here.",
+      "primaryBtn": "View Open Roles",
+      "secondaryBtn": "Connect With HR"
+    },
+    "culture": {
+      "title": "A Culture Built on Innovation, Ownership & Growth",
+      "desc": "We believe great products come from teams who feel empowered, trusted and encouraged to experiment. Everyone at AI Greentick contributes ideas, solves problems and builds with purpose.",
+      "bulletPoints": [
+        "Remote friendly team",
+        "Fast paced and collaborative",
+        "Ownership over your work",
+        "Transparent communication"
+      ]
+    },
+    "values": [
+      {
+        "title": "Simplicity",
+        "desc": "We turn complex communication problems into easy solutions."
+      },
+      {
+        "title": "Customer Focus",
+        "desc": "We build tools that solve real problems for real teams."
+      },
+      {
+        "title": "Innovation",
+        "desc": "We move fast, iterate quickly and embrace new ideas."
+      },
+      {
+        "title": "Integrity",
+        "desc": "Honesty, trust and clarity in everything we do."
+      }
+    ],
+    "lifeAt": {
+      "title": "Life at AI Greentick",
+      "desc": "We’re a young, energetic team that values flexibility, creativity and real impact. No micromanagement. No unnecessary hierarchy. Just meaningful work and a supportive environment."
+    },
+    "roles": [
+      {
+        "title": "Software Engineer (Backend)",
+        "type": "Full time",
+        "loc": "Remote / On site",
+        "desc": "Build scalable backend services and integrations powering WhatsApp automation."
+      },
+      {
+        "title": "Frontend Developer",
+        "type": "Full time",
+        "loc": "Remote / On site",
+        "desc": "Help create seamless user experiences across our dashboard."
+      },
+      {
+        "title": "Product Designer",
+        "type": "Full time",
+        "loc": "Remote / On site",
+        "desc": "Design intuitive workflows and UI for teams using the platform daily."
+      },
+      {
+        "title": "Sales Executive",
+        "type": "Full time",
+        "loc": "On site / Hybrid",
+        "desc": "Manage demos, client onboarding and product walkthroughs."
+      },
+      {
+        "title": "Customer Support Specialist",
+        "type": "Full time",
+        "loc": "Remote / On site",
+        "desc": "Assist customers with onboarding, troubleshooting and success workflows."
+      }
+    ],
+    "process": [
+      {
+        "step": "1",
+        "title": "Review",
+        "desc": "Application & Portfolio Check"
+      },
+      {
+        "step": "2",
+        "title": "Intro",
+        "desc": "Quick Goal Alignment Call"
+      },
+      {
+        "step": "3",
+        "title": "Task",
+        "desc": "Small Assessment"
+      },
+      {
+        "step": "4",
+        "title": "Technical",
+        "desc": "Functional Discussion"
+      },
+      {
+        "step": "5",
+        "title": "Culture",
+        "desc": "Founder / Leadership Chat"
+      },
+      {
+        "step": "6",
+        "title": "Offer",
+        "desc": "Welcome to the Team!"
+      }
+    ],
+    "benefits": [
+      "Competitive salaries",
+      "Remote friendly environment",
+      "Flexible hours",
+      "Learning & upskilling opportunities",
+      "Ownership of impactful work",
+      "Fast career growth in a scaling SaaS company"
+    ],
+    "faqs": [
+      {
+        "q": "Do you hire remotely?",
+        "a": "Yes, many of our roles are remote friendly."
+      },
+      {
+        "q": "Do you require degrees or certifications?",
+        "a": "No. Skills, attitude and problem solving matter more."
+      },
+      {
+        "q": "How long does the hiring process take?",
+        "a": "Usually between 1 to 3 weeks, depending on the role."
+      },
+      {
+        "q": "Can I apply for multiple positions?",
+        "a": "Yes, feel free to apply for any relevant role."
+      }
+    ],
+    "cta": {
+      "title": "Ready to Build Something Meaningful?",
+      "desc": "If you're passionate about creating modern communication tools and want to be part of a fast growing SaaS team, we’d love to meet you.",
+      "primaryBtn": "View Open Roles",
+      "secondaryBtn": "Connect With HR"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "We’re Here to Help Succeed on WhatsApp",
+      "desc": "Build rich customer profiles, automate responses, and manage your team efficiently. Whether you have questions about pricing, onboarding or integrations — our team is ready to assist.",
+      "primaryBtn": "Talk to Sales"
+    },
+    "faqs": [
+      {
+        "q": "Do you offer a free trial?",
+        "a": "Yes, we offer a 14-day free trial with full access to all features so you can experience the platform before committing."
+      },
+      {
+        "q": "How long does verification take?",
+        "a": "Meta verification usually takes 2-5 business days. We handle the submission process for you to ensure everything goes smoothly."
+      },
+      {
+        "q": "Can I integrate AI Greentick with my CRM?",
+        "a": "Absolutely. We support native integrations with major CRMs like HubSpot and Salesforce, plus 5000+ apps via Zapier."
+      },
+      {
+        "q": "What support channels are available?",
+        "a": "We offer email and chat support on all plans. Priority phone support and dedicated account managers are available on Growth and Enterprise plans."
+      }
+    ]
+  },
+  "comparePage": {
+    "hero": {
+      "badge": "Comparison",
+      "title": "AI Greentick vs WATI\nA Clear, Honest Comparison",
+      "subtitle": "Both AI Greentick and WATI help businesses communicate on WhatsApp. But the way they handle broadcasts, automation, inbox management and pricing is very different. Here’s a simple breakdown to help you choose."
+    },
+    "overview": {
+      "title": "Quick Summary: Differences Between Platforms",
+      "desc": "WATI is a well known WhatsApp marketing tool with a strong presence in the industry. AI Greentick focuses on simplicity, speed, automation and affordability — especially for Indian and Southeast Asian businesses.",
+      "highlights": [
+        "Easier onboarding",
+        "Cleaner UI",
+        "Lower pricing",
+        "Stronger automation",
+        "Faster support"
+      ]
+    },
+    "differences": [
+      {
+        "title": "Simplicity & Ease of Use",
+        "desc": "WATI has a lot of legacy features which makes the interface feel complex and cluttered. AI Greentick is built from the ground up for speed. You can start broadcasts or set up bots with zero learning curve."
+      },
+      {
+        "title": "Pricing & Hidden Fees",
+        "desc": "WATI charges high base subscription fees and additional platform markup fees for messages. AI Greentick offers direct Meta billing rates with simple tiers and zero hidden percentage cuts."
+      },
+      {
+        "title": "Customer Support Response Time",
+        "desc": "AI Greentick offers 24/7 dedicated support via WhatsApp and Slack. WATI support can often take days via email support tickets."
+      }
+    ],
+    "comparisonGrid": [
+      {
+        "feature": "Meta Approved API",
+        "aigreentick": true,
+        "wati": true
+      },
+      {
+        "feature": "Unlimited Agents / Seats",
+        "aigreentick": true,
+        "wati": false
+      },
+      {
+        "feature": "No-Code Flow Builder",
+        "aigreentick": true,
+        "wati": true
+      },
+      {
+        "feature": "Direct Meta API Rates",
+        "aigreentick": true,
+        "wati": false
+      },
+      {
+        "feature": "Priority Chat Support",
+        "aigreentick": true,
+        "wati": false
+      },
+      {
+        "feature": "Indian / Local Support",
+        "aigreentick": true,
+        "wati": true
+      }
+    ],
+    "migration": [
+      "Migrate in 24 hours",
+      "Keep your number",
+      "Move templates",
+      "Rebuild leads & flows"
+    ]
+  },
+  "sharedTeamInbox": {
+    "title": "One Number, Infinite Team Members",
+    "desc": "Scale your customer support and sales without sharing physical phones. Our shared team inbox gives everyone a transparent view of all conversations.",
+    "features": [
+      "Assign chats to specific agents automatically",
+      "Add private internal notes for collaboration",
+      "Tag conversations for easy filtering",
+      "Set up automatic out-of-office replies"
+    ]
+  },
+  "aiChatbotBuilder": {
+    "badge": "Smart Automation",
+    "title": "Don't Let Broadcast Replies Overwhelm You",
+    "desc": "Sending a campaign to 5,000 customers? You might get hundreds of replies in minutes. Instead of manual handling, let our AI Chatbot instantly answer FAQs, qualify leads, and schedule appointments 24/7.",
+    "items": [
+      "Auto-reply to common questions (Price, Location, etc.)",
+      "Qualify interested leads before human handover",
+      "Book meetings or collect details automatically"
+    ],
+    "buttonText": "Explore Chatbot Builder"
+  },
+  "leads": []
+}

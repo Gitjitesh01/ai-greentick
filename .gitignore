@@ -1,0 +1,13 @@
+# Root-level gitignore to prevent pushing build assets and secrets
+node_modules/
+dist/
+.env
+.env.production
+.env.local
+.env.development
+.env.staging
+*.log
+.DS_Store
+.idea/
+.vscode/
+uploads/

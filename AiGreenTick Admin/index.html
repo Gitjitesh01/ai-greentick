@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Greentick - Admin Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#e6f8ed',
+                100: '#ccf1db',
+                200: '#99e3b7',
+                300: '#66d593',
+                400: '#33c66f',
+                500: '#01B84B',
+                600: '#01933c',
+                700: '#016e2d',
+                800: '#014a1e',
+                900: '#00250f',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+        "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
+        "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+        "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+        "clsx": "https://esm.sh/clsx@^2.1.1",
+        "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0",
+        "framer-motion": "https://esm.sh/framer-motion@^11.0.0?external=react,react-dom",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body class="bg-slate-900 selection:bg-emerald-100 selection:text-emerald-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
