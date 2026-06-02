@@ -3,3 +3,32 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Sidebar and Layout Responsiveness Fallbacks */
+.admin-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop-sidebar {
+  display: none !important;
+}
+
+.mobile-menu-btn {
+  display: block !important;
+}
+
+@media (min-width: 768px) {
+  .admin-layout-wrapper {
+    flex-direction: row;
+  }
+  .desktop-sidebar {
+    display: flex !important;
+  }
+  .mobile-menu-btn {
+    display: none !important;
+  }
+  .mobile-sidebar-overlay {
+    display: none !important;
+  }
+}

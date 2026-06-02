@@ -345,10 +345,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col md:flex-row font-sans relative">
+    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col md:flex-row font-sans relative admin-layout-wrapper">
       
       {/* SIDEBAR FOR DESKTOP */}
-      <aside className="hidden md:flex w-64 bg-slate-950 border-r border-slate-800 flex-col pt-6 shrink-0 h-screen overflow-y-auto">
+      <aside className="hidden md:flex w-64 bg-slate-950 border-r border-slate-800 flex-col pt-6 shrink-0 h-screen overflow-y-auto desktop-sidebar">
         <div className="px-6 mb-6 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-1.5 font-bold text-lg text-white">
             <span className="text-emerald-500">ai</span>Greentick 
@@ -439,7 +439,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
       {/* MOBILE SIDEBAR DRAWER */}
       {isMobileSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden flex justify-start"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-start mobile-sidebar-overlay"
           onClick={() => setIsMobileSidebarOpen(false)}
         >
           <aside 
@@ -559,7 +559,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
           <div className="flex items-center gap-3">
             <button 
               onClick={() => setIsMobileSidebarOpen(true)}
-              className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 md:hidden transition-colors"
+              className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors mobile-menu-btn"
               title="Open Sidebar"
             >
               <Menu className="w-5 h-5" />
