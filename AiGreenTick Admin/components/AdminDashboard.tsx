@@ -4,7 +4,7 @@ import {
   HelpCircle, Briefcase, BarChart3, CreditCard, MessageSquare, 
   Link, FileText, Award, Compass, Users, LogOut, Save, 
   RefreshCw, Eye, ArrowLeft, Mail, Phone, Building, AlertTriangle,
-  ChevronDown, ChevronUp, Trash2, ClipboardList
+  ChevronDown, ChevronUp, Trash2, ClipboardList, Menu, X
 } from 'lucide-react';
 
 // Import Modular Editors
@@ -65,6 +65,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [leads, setLeads] = useState<any[]>([]);
   const [saveStatus, setSaveStatus] = useState<{ type: 'success' | 'error' | 'saving' | null; message: string }>({ type: null, message: '' });
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
   
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     homePage: true,
@@ -344,10 +345,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex font-sans">
+    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col md:flex-row font-sans relative">
       
-      {/* SIDEBAR */}
-      <aside className="w-64 bg-slate-950 border-r border-slate-800 flex flex-col pt-6 shrink-0 h-screen overflow-y-auto">
+      {/* SIDEBAR FOR DESKTOP */}
+      <aside className="hidden md:flex w-64 bg-slate-950 border-r border-slate-800 flex-col pt-6 shrink-0 h-screen overflow-y-auto">
         <div className="px-6 mb-6 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-1.5 font-bold text-lg text-white">
             <span className="text-emerald-500">ai</span>Greentick 
@@ -435,15 +436,139 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
         </div>
       </aside>
 
+      {/* MOBILE SIDEBAR DRAWER */}
+      {isMobileSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden flex justify-start"
+          onClick={() => setIsMobileSidebarOpen(false)}
+        >
+          <aside 
+            className="w-64 bg-slate-950 h-full flex flex-col pt-6 overflow-y-auto border-r border-slate-800"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-6 mb-6 flex justify-between items-center shrink-0">
+              <div className="flex items-center gap-1.5 font-bold text-lg text-white">
+                <span className="text-emerald-500">ai</span>Greentick 
+                <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded px-1.5 py-0.5 text-[9px] uppercase tracking-wider ml-1">Admin</span>
+              </div>
+              <button 
+                onClick={() => setIsMobileSidebarOpen(false)}
+                className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <nav className="flex-1 space-y-3 px-3 mb-6">
+              <button 
+                onClick={() => {
+                  setActiveTab('overview');
+                  setIsMobileSidebarOpen(false);
+                }}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold transition-all relative ${
+                  activeTab === 'overview' 
+                    ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/15' 
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                }`}
+              >
+                <LayoutGrid className="w-4 h-4" />
+                <span>Overview Dashboard</span>
+              </button>
+
+              <div className="space-y-2.5 pt-2 border-t border-slate-800/50">
+                {sidebarGroups.map((group) => {
+                  const isExpanded = expandedSections[group.id];
+                  return (
+                    <div key={group.id} className="space-y-1">
+                      <button 
+                        type="button"
+                        onClick={() => toggleSection(group.id)}
+                        className="w-full flex items-center justify-between px-3 py-1.5 text-[10px] font-bold text-slate-500 hover:text-slate-300 uppercase tracking-wider transition-colors"
+                      >
+                        <span>{group.label}</span>
+                        {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                      </button>
+                      {isExpanded && (
+                        <div className="space-y-1 pl-1 border-l border-slate-800/40 ml-2.5">
+                          {group.items.map((item) => {
+                            const Icon = item.icon;
+                            const isSelected = activeTab === item.id;
+                            return (
+                              <button 
+                                type="button"
+                                key={item.id}
+                                onClick={() => {
+                                  setActiveTab(item.id);
+                                  setIsMobileSidebarOpen(false);
+                                }}
+                                className={`w-full flex items-center gap-2.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all relative ${
+                                  isSelected 
+                                    ? 'bg-emerald-600/15 text-emerald-400 border-l-2 border-emerald-500 font-bold' 
+                                    : 'text-slate-400 hover:text-white hover:bg-slate-800/30'
+                                }`}
+                              >
+                                <Icon className="w-3.5 h-3.5 shrink-0" />
+                                <span className="truncate">{item.label}</span>
+                                {item.badge !== undefined && item.badge > 0 && (
+                                  <span className="absolute right-3 top-1/2 -translate-y-1/2 bg-emerald-500 text-slate-950 text-[9px] font-extrabold rounded-full w-4 h-4 flex items-center justify-center border border-slate-950 shadow-sm">
+                                    {item.badge}
+                                  </span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </nav>
+
+            <div className="p-4 border-t border-slate-850 space-y-2 bg-slate-950 shrink-0">
+              <button 
+                onClick={() => {
+                  onNavigateHome();
+                  setIsMobileSidebarOpen(false);
+                }}
+                className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800/30 text-xs font-bold transition-all"
+              >
+                <Eye className="w-4 h-4" />
+                View Website
+              </button>
+              <button 
+                onClick={() => {
+                  handleLogout();
+                  setIsMobileSidebarOpen(false);
+                }}
+                className="w-full flex items-center justify-center gap-2 py-2 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 text-xs font-bold transition-all"
+              >
+                <LogOut className="w-4 h-4" />
+                Log Out
+              </button>
+            </div>
+          </aside>
+        </div>
+      )}
+
       {/* MAIN CONTAINER */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         
         {/* HEADER */}
-        <header className="h-16 border-b border-slate-800 bg-slate-900/50 flex items-center justify-between px-8 z-10 shrink-0">
-          <h1 className="text-sm font-extrabold text-white capitalize tracking-widest flex items-center gap-2">
-            <span>{activeTab.replace(/([A-Z])/g, ' $1')}</span>
-            <span className="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700">Manager</span>
-          </h1>
+        <header className="h-16 border-b border-slate-800 bg-slate-900/50 flex items-center justify-between px-4 md:px-8 z-10 shrink-0">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setIsMobileSidebarOpen(true)}
+              className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 md:hidden transition-colors"
+              title="Open Sidebar"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+            <h1 className="text-xs md:text-sm font-extrabold text-white capitalize tracking-widest flex items-center gap-2">
+              <span>{activeTab.replace(/([A-Z])/g, ' $1')}</span>
+              <span className="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700 hidden sm:inline">Manager</span>
+            </h1>
+          </div>
           
           <div className="flex items-center gap-4">
             <button 
@@ -453,7 +578,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
             >
               <RefreshCw className="w-4 h-4 animate-spin-slow" />
             </button>
-            <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">
+            <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold hidden sm:block">
               Session Active
             </div>
           </div>
@@ -461,7 +586,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
 
         {/* TOAST / SAVE STATUS NOTIFICATION */}
         {saveStatus.type && (
-          <div className={`p-4 mx-8 mt-6 rounded-xl flex items-center gap-3 border shadow-lg shrink-0 ${
+          <div className={`p-4 mx-4 md:mx-8 mt-6 rounded-xl flex items-center gap-3 border shadow-lg shrink-0 ${
             saveStatus.type === 'success' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
             saveStatus.type === 'error' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
             'bg-blue-500/10 border-blue-500/20 text-blue-400 animate-pulse'
@@ -472,7 +597,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
         )}
 
         {/* CONTENT VIEWPORT */}
-        <main className="flex-1 overflow-y-auto p-8 bg-slate-900/40">
+        <main className="flex-1 overflow-y-auto p-4 md:p-8 bg-slate-900/40">
           
           {/* TAB 1: OVERVIEW */}
           {activeTab === 'overview' && (
@@ -517,9 +642,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
                 ) : (
                   <div className="space-y-4">
                     {leads.slice(0, 4).map((lead) => (
-                      <div key={lead.id} className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex justify-between items-start gap-4">
+                      <div key={lead.id} className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div className="space-y-2">
-                          <div className="flex items-center gap-3">
+                          <div className="flex flex-wrap items-center gap-3">
                             <span className="font-bold text-sm text-white">{lead.name}</span>
                             <span className="text-[9px] font-bold bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700">{lead.type}</span>
                             <span className="text-[9px] text-slate-500">{new Date(lead.date).toLocaleDateString()}</span>
@@ -533,7 +658,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ siteData, onRefreshData
                         </div>
                         <button 
                           onClick={() => handleDeleteLead(lead.id)}
-                          className="p-2 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/25 transition-all shrink-0"
+                          className="p-2 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/25 transition-all shrink-0 self-end sm:self-center"
                           title="Delete Lead"
                         >
                           <Trash2 className="w-4 h-4" />
