@@ -30,7 +30,7 @@ interface AboutPageProps {
 }
 
 const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
-  const content = data || {
+  const defaultContent = {
     hero: {
       badge: 'About AI Greentick',
       title: 'We’re making WhatsApp work for business.',
@@ -63,6 +63,29 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
       title: 'Ready to get started?',
       primaryBtn: 'Start Free Trial',
       secondaryBtn: 'Contact Sales'
+    }
+  };
+
+  const content = {
+    hero: {
+      badge: data?.hero?.badge || defaultContent.hero.badge,
+      title: data?.hero?.title || defaultContent.hero.title,
+      subtitle: data?.hero?.subtitle || defaultContent.hero.subtitle,
+    },
+    mission: {
+      title: data?.mission?.title || defaultContent.mission.title,
+      quote: data?.mission?.quote || defaultContent.mission.quote,
+    },
+    story: {
+      title: data?.story?.title || defaultContent.story.title,
+      paragraphs: data?.story?.paragraphs || defaultContent.story.paragraphs,
+    },
+    values: data?.values || defaultContent.values,
+    stats: data?.stats || defaultContent.stats,
+    cta: {
+      title: data?.cta?.title || defaultContent.cta.title,
+      primaryBtn: data?.cta?.primaryBtn || defaultContent.cta.primaryBtn,
+      secondaryBtn: data?.cta?.secondaryBtn || defaultContent.cta.secondaryBtn,
     }
   };
 

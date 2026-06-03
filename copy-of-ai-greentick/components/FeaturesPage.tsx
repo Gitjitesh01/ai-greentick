@@ -65,7 +65,7 @@ const FeaturesPage: React.FC<FeaturesPageProps> = ({ data, sharedTeamInbox, aiCh
 
   const spotlightMask = useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px, rgba(1, 184, 75, 0.15), transparent 80%)`;
 
-  const content = data || {
+  const defaultContent = {
     hero: {
       badge: 'WhatsApp Marketing Suite 2.0',
       title: 'Everything You Need To\nGrow on WhatsApp',
@@ -85,10 +85,34 @@ const FeaturesPage: React.FC<FeaturesPageProps> = ({ data, sharedTeamInbox, aiCh
     ]
   };
 
-  const inboxContent = sharedTeamInbox || {
+  const content = {
+    hero: {
+      badge: data?.hero?.badge || defaultContent.hero.badge,
+      title: data?.hero?.title || defaultContent.hero.title,
+      subtitle: data?.hero?.subtitle || defaultContent.hero.subtitle,
+      primaryCta: data?.hero?.primaryCta || defaultContent.hero.primaryCta,
+      secondaryCta: data?.hero?.secondaryCta || defaultContent.hero.secondaryCta,
+      showcaseText: data?.hero?.showcaseText || defaultContent.hero.showcaseText,
+    },
+    ctaFinal: {
+      title: data?.ctaFinal?.title || defaultContent.ctaFinal.title,
+      desc: data?.ctaFinal?.desc || defaultContent.ctaFinal.desc,
+      buttonText: data?.ctaFinal?.buttonText || defaultContent.ctaFinal.buttonText,
+    },
+    faqs: data?.faqs || defaultContent.faqs
+  };
+
+  const defaultInboxContent = {
     hero: {
       title: "One Number, Infinite Team Members",
       desc: "Scale your customer support and sales without sharing physical phones. Our shared team inbox gives everyone a transparent view of all conversations."
+    }
+  };
+
+  const inboxContent = {
+    hero: {
+      title: sharedTeamInbox?.hero?.title || sharedTeamInbox?.title || defaultInboxContent.hero.title,
+      desc: sharedTeamInbox?.hero?.desc || sharedTeamInbox?.desc || defaultInboxContent.hero.desc
     }
   };
 

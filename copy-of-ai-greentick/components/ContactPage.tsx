@@ -164,10 +164,16 @@ const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
     }
   ];
 
-  const heroData = data?.hero || {
+  const defaultHeroData = {
     title: 'We’re Here to Help Succeed on WhatsApp',
     desc: 'Build rich customer profiles, automate responses, and manage your team efficiently. Whether you have questions about pricing, onboarding or integrations — our team is ready to assist.',
     primaryBtn: 'Talk to Sales'
+  };
+
+  const heroData = {
+    title: data?.hero?.title || defaultHeroData.title,
+    desc: data?.hero?.desc || defaultHeroData.desc,
+    primaryBtn: data?.hero?.primaryBtn || defaultHeroData.primaryBtn
   };
 
   return (

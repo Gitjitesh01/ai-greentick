@@ -34,7 +34,7 @@ const ComparePage: React.FC<ComparePageProps> = ({ data }) => {
     }
   }, []);
 
-  const content = data || {
+  const defaultContent = {
     hero: {
       badge: 'Comparison',
       title: 'AI Greentick vs WATI\nA Clear, Honest Comparison',
@@ -64,6 +64,22 @@ const ComparePage: React.FC<ComparePageProps> = ({ data }) => {
       "Move templates",
       "Rebuild leads & flows"
     ]
+  };
+
+  const content = {
+    hero: {
+      badge: data?.hero?.badge || defaultContent.hero.badge,
+      title: data?.hero?.title || defaultContent.hero.title,
+      subtitle: data?.hero?.subtitle || defaultContent.hero.subtitle,
+    },
+    overview: {
+      title: data?.overview?.title || defaultContent.overview.title,
+      desc: data?.overview?.desc || defaultContent.overview.desc,
+      highlights: data?.overview?.highlights || defaultContent.overview.highlights,
+    },
+    differences: data?.differences || defaultContent.differences,
+    comparisonGrid: data?.comparisonGrid || defaultContent.comparisonGrid,
+    migration: data?.migration || defaultContent.migration
   };
 
   const migrationSteps = content.migration.map((text, i) => {

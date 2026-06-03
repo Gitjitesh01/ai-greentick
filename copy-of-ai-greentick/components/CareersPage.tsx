@@ -37,7 +37,7 @@ interface CareersPageProps {
 }
 
 const CareersPage: React.FC<CareersPageProps> = ({ data }) => {
-  const content = data || {
+  const defaultContent = {
     hero: {
       badge: 'CAREERS',
       title: 'Join Us in Building the Future of WhatsApp Automation',
@@ -98,6 +98,35 @@ const CareersPage: React.FC<CareersPageProps> = ({ data }) => {
     },
     lifeAt: {
       desc: "We work hard, play hard, and always push the boundaries of what's possible in the WhatsApp automation space."
+    }
+  };
+
+  const content = {
+    hero: {
+      badge: data?.hero?.badge || defaultContent.hero.badge,
+      title: data?.hero?.title || defaultContent.hero.title,
+      subtitle: data?.hero?.subtitle || defaultContent.hero.subtitle,
+      primaryBtn: data?.hero?.primaryBtn || defaultContent.hero.primaryBtn,
+      secondaryBtn: data?.hero?.secondaryBtn || defaultContent.hero.secondaryBtn,
+    },
+    culture: {
+      title: data?.culture?.title || defaultContent.culture.title,
+      desc: data?.culture?.desc || defaultContent.culture.desc,
+      bulletPoints: data?.culture?.bulletPoints || defaultContent.culture.bulletPoints,
+    },
+    values: data?.values || defaultContent.values,
+    roles: data?.roles || defaultContent.roles,
+    process: data?.process || defaultContent.process,
+    benefits: data?.benefits || defaultContent.benefits,
+    faqs: data?.faqs || defaultContent.faqs,
+    cta: {
+      title: data?.cta?.title || defaultContent.cta.title,
+      desc: data?.cta?.desc || defaultContent.cta.desc,
+      primaryBtn: data?.cta?.primaryBtn || defaultContent.cta.primaryBtn,
+      secondaryBtn: data?.cta?.secondaryBtn || defaultContent.cta.secondaryBtn,
+    },
+    lifeAt: {
+      desc: data?.lifeAt?.desc || defaultContent.lifeAt.desc
     }
   };
 

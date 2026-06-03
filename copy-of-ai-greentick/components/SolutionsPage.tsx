@@ -26,7 +26,7 @@ interface SolutionsPageProps {
 }
 
 const SolutionsPage: React.FC<SolutionsPageProps> = ({ data }) => {
-  const content = data || {
+  const defaultContent = {
     hero: {
       badge: 'SOLUTIONS',
       title: 'WhatsApp Solutions for Every Type of Business',
@@ -80,6 +80,24 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ data }) => {
       { title: "Unified WhatsApp communication" },
       { title: "Real time analytics for smarter decisions" }
     ]
+  };
+
+  const content = {
+    hero: {
+      badge: data?.hero?.badge || defaultContent.hero.badge,
+      title: data?.hero?.title || defaultContent.hero.title,
+      subtitle: data?.hero?.subtitle || defaultContent.hero.subtitle,
+      primaryCta: data?.hero?.primaryCta || defaultContent.hero.primaryCta,
+      secondaryCta: data?.hero?.secondaryCta || defaultContent.hero.secondaryCta,
+    },
+    overview: {
+      title: data?.overview?.title || defaultContent.overview.title,
+      desc: data?.overview?.desc || defaultContent.overview.desc,
+      items: data?.overview?.items || defaultContent.overview.items,
+    },
+    industries: data?.industries || defaultContent.industries,
+    roles: data?.roles || defaultContent.roles,
+    benefits: data?.benefits || defaultContent.benefits,
   };
 
   return (

@@ -59,7 +59,7 @@ const BroadcastsPage: React.FC<BroadcastsPageProps> = ({ data }) => {
 
   const marqueeLogos = [...logos, ...logos, ...logos, ...logos];
 
-  const content = data || {
+  const defaultContent = {
     hero: {
       title: 'Send High Delivery\nWhatsApp Campaigns',
       desc: "Reach thousands instantly with personalised WhatsApp broadcasts equipped with interactive buttons (e.g. 'Call Now', 'Visit Website'). Promote offers, send reminders, share updates and drive conversions with better delivery.",
@@ -99,6 +99,32 @@ const BroadcastsPage: React.FC<BroadcastsPageProps> = ({ data }) => {
       desc: 'Join thousands of businesses engaging their customers on WhatsApp with AI Greentick.',
       primaryCta: 'Start Free Trial',
       secondaryCta: 'Book a Demo'
+    }
+  };
+
+  const content = {
+    hero: {
+      title: data?.hero?.title || defaultContent.hero.title,
+      desc: data?.hero?.desc || defaultContent.hero.desc,
+      primaryCta: data?.hero?.primaryCta || defaultContent.hero.primaryCta,
+      secondaryCta: data?.hero?.secondaryCta || defaultContent.hero.secondaryCta,
+      badgeText: data?.hero?.badgeText || defaultContent.hero.badgeText,
+      deliveryText: data?.hero?.deliveryText || defaultContent.hero.deliveryText,
+    },
+    smartAutomation: {
+      badge: data?.smartAutomation?.badge || defaultContent.smartAutomation.badge,
+      title: data?.smartAutomation?.title || defaultContent.smartAutomation.title,
+      desc: data?.smartAutomation?.desc || defaultContent.smartAutomation.desc,
+      items: data?.smartAutomation?.items || defaultContent.smartAutomation.items,
+      buttonText: data?.smartAutomation?.buttonText || defaultContent.smartAutomation.buttonText,
+    },
+    features: data?.features || defaultContent.features,
+    faqs: data?.faqs || defaultContent.faqs,
+    ctaFinal: {
+      title: data?.ctaFinal?.title || defaultContent.ctaFinal.title,
+      desc: data?.ctaFinal?.desc || defaultContent.ctaFinal.desc,
+      primaryCta: data?.ctaFinal?.primaryCta || defaultContent.ctaFinal.primaryCta,
+      secondaryCta: data?.ctaFinal?.secondaryCta || defaultContent.ctaFinal.secondaryCta,
     }
   };
 
