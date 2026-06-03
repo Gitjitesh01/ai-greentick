@@ -1,8 +1,8 @@
 import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
-  ArrowRight, LayoutGrid, MessageSquare, User, Send, Bot, 
-  CreditCard, FileText, Shield, Users, Settings, Search, 
-  Filter, ChevronRight, CheckCircle2, Globe, Truck, ExternalLink
+  ArrowRight, CheckCircle2, Bot, Layers, BarChart3, 
+  Send, Users, Sparkles, ShoppingBag, HelpCircle, ArrowUpRight
 } from 'lucide-react';
 
 interface HeroProps {
@@ -27,260 +27,363 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
   const firstLine = titleLines[0];
   const restLines = titleLines.slice(1).join(' ');
 
-  return (
-    <section id="home-hero" className="relative pt-32 pb-0 lg:pt-48 lg:pb-0 overflow-hidden bg-[#0A0A0A]">
-      {/* Page Background */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-[#001a0d] via-[#050505] to-black"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_20%,#000_60%,transparent_100%)] pointer-events-none"></div>
-      
-      <style>{`
-        @keyframes subtle-float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-6px); }
-        }
-        @keyframes shimmer-sweep {
-          0% { transform: translateX(-150%) skewX(-25deg); }
-          20%, 100% { transform: translateX(250%) skewX(-25deg); }
-        }
-        .animate-subtle-float { animation: subtle-float 4s ease-in-out infinite; }
-        .animate-shimmer-sweep { animation: shimmer-sweep 4s infinite linear; }
-        .dotted-bg {
-          background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
-          background-size: 24px 24px;
-        }
-        /* Dashboard specific glow effect */
-        .premium-dashboard-glow {
-          background: radial-gradient(circle at center, rgba(1, 184, 75, 0.4) 0%, rgba(1, 184, 75, 0.15) 35%, rgba(1, 184, 75, 0.05) 60%, transparent 80%);
-        }
-      `}</style>
+  // Framer Motion Scroll-Linked Parallax transforms
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 1000], [0, 180]);
+  const gridY = useTransform(scrollY, [0, 1000], [0, 80]);
+  const textY = useTransform(scrollY, [0, 1000], [0, -20]);
+  const visualY = useTransform(scrollY, [0, 1000], [0, 20]);
+  const blob1Y = useTransform(scrollY, [0, 1000], [0, 200]);
+  const blob2Y = useTransform(scrollY, [0, 1000], [0, -100]);
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
-        <div className="max-w-5xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white text-xs font-bold tracking-widest uppercase mb-10 backdrop-blur-md">
-            {badgeText}
+  return (
+    <section id="home-hero" className="relative pt-32 pb-24 lg:pt-48 lg:pb-36 overflow-hidden bg-slate-950 text-white">
+      
+      {/* Parallax Background gradients */}
+      <motion.div 
+        style={{ y: bgY }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-emerald-950/40 via-slate-950 to-slate-950 -z-10 pointer-events-none"
+      />
+      
+      {/* Floating Futuristic Blur Blobs */}
+      <motion.div 
+        style={{ y: blob1Y }}
+        className="absolute top-20 left-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none -z-10"
+      />
+      <motion.div 
+        style={{ y: blob2Y }}
+        className="absolute bottom-20 right-10 w-96 h-96 bg-brand-500/5 rounded-full blur-[120px] pointer-events-none -z-10"
+      />
+
+      {/* Parallax Grid Overlay */}
+      <motion.div 
+        style={{ y: gridY }}
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,#000_60%,transparent_100%)] pointer-events-none -z-10"
+      />
+
+      <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-4 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+        
+        {/* Left Column: Text Area (Left Aligned Side-by-Side) */}
+        <motion.div 
+          style={{ y: textY }}
+          className="w-full lg:w-[40%] flex flex-col items-start text-left z-20 shrink-0"
+          initial={{ opacity: 0, x: -35 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          {/* Glowing Accent Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-8">
+            <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+            <span>{badgeText}</span>
           </div>
-          <h1 className="text-5xl lg:text-[84px] lg:leading-[1.1] font-bold text-white mb-10 tracking-tight">
+
+          <h1 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight leading-[1.15] mb-6">
             {firstLine}
             {titleLines.length > 1 && (
               <>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-white">{restLines}</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-emerald-300 to-teal-400">
+                  {restLines}
+                </span>
               </>
             )}
           </h1>
-          <p className="text-lg lg:text-2xl text-slate-400 mb-14 max-w-4xl mx-auto leading-relaxed font-light">
+
+          <p className="text-sm sm:text-base text-slate-300 mb-10 max-w-xl leading-relaxed font-light">
             {subtitleText}
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 items-center">
-            {/* Primary CTA with subtle shimmer effect */}
-            <button className="shiny-cta relative group overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-brand-500/30 shadow-2xl">
-              <span className="relative z-10">{primaryCtaText}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer-sweep pointer-events-none z-0" />
-            </button>
-            
-            {/* Outline CTA with distinct hover state */}
-            <a href="#contact" 
-               className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full border-2 border-white/20 text-white font-bold transition-all duration-300 hover:bg-white/10 hover:border-white/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] group backdrop-blur-sm">
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-8 w-full sm:w-auto">
+            <motion.button 
+              onClick={() => {
+                const pricingSec = document.querySelector('#pricing');
+                if (pricingSec) pricingSec.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold transition-all shadow-lg shadow-brand-500/20 text-sm"
+              whileHover={{ scale: 1.03, boxShadow: '0 8px 25px rgba(1, 184, 75, 0.4)' }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <span>{primaryCtaText}</span>
+              <ArrowRight className="w-4 h-4" />
+            </motion.button>
+
+            <motion.a 
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                const contactSec = document.querySelector('#home-problem-solution');
+                if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-700 bg-slate-900/50 text-white font-bold transition-all hover:bg-slate-900 hover:border-slate-600 backdrop-blur-sm text-sm"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
               <span>{secondaryCtaText}</span>
-              <ArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1.5" />
-            </a>
+              <ArrowUpRight className="w-4 h-4 text-slate-400" />
+            </motion.a>
           </div>
-        </div>
 
-        {/* --- DASHBOARD WITH HOVER POP EFFECT --- */}
-        <div className="relative group w-full max-w-6xl mx-auto mt-8 z-20 transition-all duration-700 ease-out hover:scale-[1.015] hover:-translate-y-3">
-          
-          {/* Enhanced Background Glow Layer */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] premium-dashboard-glow blur-[120px] -z-10 pointer-events-none opacity-90 transition-opacity duration-700 group-hover:opacity-100"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-brand-500/10 blur-[80px] -z-10 pointer-events-none"></div>
-          
-          {/* Main Dashboard Container */}
-          <div className="relative overflow-hidden rounded-t-[2.5rem] border-[10px] border-b-0 border-[#0F172A] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] transition-shadow duration-700 group-hover:shadow-[0_80px_150px_-30px_rgba(0,0,0,0.9)]">
-            {/* Browser Header Bar */}
-            <div className="h-12 bg-[#F8F9FA] border-b border-slate-200 flex items-center px-4 gap-4">
-               <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
-               </div>
-               <div className="flex-1 max-w-md mx-auto">
-                  <div className="bg-[#EBEDF0] h-7 rounded-md flex items-center px-3 gap-2 justify-center">
-                     <div className="w-2 h-2 rounded-full bg-brand-500"></div>
-                     <span className="text-[10px] text-slate-500 font-medium tracking-tight">dashboard.aigreentick.com</span>
-                  </div>
-               </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 text-slate-400 text-xs">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-brand-500" />
+              <span>No Credit Card Required</span>
             </div>
-
-            <div className="relative bg-white flex h-[650px] md:h-[750px] text-left">
-              
-              {/* Sidebar */}
-              <div className="w-[72px] bg-slate-50 border-r border-slate-200 flex flex-col items-center py-6 gap-6 shrink-0">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 cursor-pointer mb-2">
-                     <div className="border-2 border-slate-300 rounded p-0.5"><ChevronRight className="w-3 h-3" /></div>
-                  </div>
-                  <LayoutGrid className="w-6 h-6 text-slate-400 hover:text-brand-600 transition-colors cursor-pointer" />
-                  <div className="w-12 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20 cursor-pointer">
-                    <MessageSquare className="w-6 h-6" />
-                  </div>
-                  <User className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                  <Send className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                  <Bot className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                  <CreditCard className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                  <FileText className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                  <Shield className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                  <Users className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                  <div className="mt-auto flex flex-col items-center gap-6">
-                    <Settings className="w-6 h-6 text-slate-400 hover:text-brand-600 cursor-pointer" />
-                    <div className="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold text-xs shadow-md">AA</div>
-                  </div>
-              </div>
-
-              {/* Chat List Column */}
-              <div className="w-80 bg-white border-r border-slate-200 hidden md:flex flex-col">
-                  <div className="p-6 pb-2 flex justify-between items-center">
-                    <h2 className="font-bold text-xl text-slate-900">All Messages</h2>
-                    <div className="w-2.5 h-2.5 bg-brand-500 rounded-full"></div>
-                  </div>
-
-                  <div className="flex-1 overflow-y-auto no-scrollbar pt-4">
-                      {[
-                        { name: "Sarah Miller", msg: "When will my order arrive?", time: "2m", tag: "SUPPORT", selected: true, avatar: "S" },
-                        { name: "Apex Solutions", msg: "Thanks for the quick reply!", time: "15m", tag: "SALES", avatar: "A" },
-                        { name: "John Doe", msg: "Can I get a custom quote?", time: "1h", tag: "LEAD", avatar: "J" },
-                        { name: "Emily Chen", msg: "Payment failed, help needed.", time: "2h", tag: "URGENT", avatar: "E" },
-                        { name: "Design Studio", msg: "Campaign looks great.", time: "3h", tag: "CLIENT", avatar: "D" }
-                      ].map((chat, i) => (
-                          <div key={i} className={`px-6 py-5 border-l-4 transition-all cursor-pointer flex items-start gap-4 ${chat.selected ? 'bg-[#F0FDF4] border-brand-500' : 'bg-white border-transparent hover:bg-slate-50'}`}>
-                             <div className="w-10 h-10 rounded-full bg-[#F1F5F9] shrink-0 flex items-center justify-center font-bold text-slate-500 text-sm">
-                               {chat.avatar}
-                             </div>
-                             <div className="flex-1 min-w-0">
-                               <div className="flex justify-between items-center mb-0.5">
-                                 <span className="font-bold text-slate-900 text-sm truncate">{chat.name}</span>
-                                 <span className="text-[10px] text-slate-400 font-medium">{chat.time}</span>
-                               </div>
-                               <p className="text-xs text-slate-500 truncate mb-2">{chat.msg}</p>
-                               <span className={`text-[9px] font-bold tracking-wider px-2 py-0.5 rounded-sm border ${chat.tag === 'URGENT' ? 'bg-red-50 border-red-100 text-red-600' : 'bg-slate-50 border-slate-200 text-slate-500'}`}>
-                                  {chat.tag}
-                               </span>
-                             </div>
-                          </div>
-                      ))}
-                  </div>
-              </div>
-
-              {/* Chat Content Window */}
-              <div className="flex-1 bg-white flex flex-col">
-                  {/* Chat Header */}
-                  <div className="h-20 bg-white border-b border-slate-200 flex items-center px-8 justify-between shrink-0">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
-                        SM
-                      </div>
-                      <div>
-                        <div className="font-bold text-slate-900 text-base">Sarah Miller</div>
-                        <div className="flex items-center gap-1.5">
-                          <div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div>
-                          <span className="text-[11px] text-slate-400 font-medium">Online via WhatsApp</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                       <button className="p-2 text-slate-400 hover:text-slate-600 transition-colors border border-slate-200 rounded-lg"><Filter className="w-5 h-5" /></button>
-                       <div className="px-3 py-1.5 bg-[#F0FDF4] text-brand-600 text-[11px] font-bold rounded-lg border border-brand-100">
-                          24hr window
-                       </div>
-                    </div>
-                  </div>
-
-                  {/* Messages Area with Dotted Background */}
-                  <div className="flex-1 p-8 space-y-8 overflow-y-auto no-scrollbar dotted-bg relative">
-                      <div className="flex justify-center">
-                         <span className="px-3 py-1 bg-slate-100 text-slate-400 text-[10px] font-bold rounded-full uppercase tracking-wider">Today, 10:23 AM</span>
-                      </div>
-
-                      {/* Sarah Message 1 */}
-                      <div className="flex items-start gap-3 max-w-[70%]">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 shrink-0 flex items-center justify-center text-blue-600 font-bold text-[10px]">SM</div>
-                        <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-200 text-sm text-slate-800 leading-relaxed font-medium">
-                          Hi! I ordered the wireless headphones yesterday. Order #9921.
-                        </div>
-                      </div>
-
-                      {/* AI Bot Message */}
-                      <div className="flex flex-col items-end gap-1 ml-auto max-w-[80%]">
-                         <div className="bg-[#F0FDF4] p-4 rounded-2xl rounded-tr-none shadow-sm border border-brand-100 text-sm text-slate-800 leading-relaxed font-medium">
-                            Hello Sarah! 👋 Let me check the status of your order #9921 for you.
-                         </div>
-                         <div className="flex items-center gap-1 text-[10px] text-brand-600 font-bold">
-                            AI Bot <CheckCircle2 className="w-3 h-3" />
-                         </div>
-                      </div>
-
-                      {/* Sarah Message 2 */}
-                      <div className="flex items-start gap-3 max-w-[70%]">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 shrink-0 flex items-center justify-center text-blue-600 font-bold text-[10px]">SM</div>
-                        <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-200 text-sm text-slate-800 leading-relaxed font-medium">
-                          Great, thank you! Just wanted to know when it arrives.
-                        </div>
-                      </div>
-
-                      {/* Tracking Card Message */}
-                      <div className="flex flex-col items-end gap-1 ml-auto w-full max-w-[480px]">
-                          <div className="bg-brand-500 rounded-2xl p-6 text-white shadow-xl shadow-brand-500/20 relative w-full overflow-hidden">
-                              <p className="text-base font-bold mb-6">Good news! It has been shipped and is scheduled for delivery by tomorrow, 2 PM. 🚚</p>
-                              
-                              <div className="bg-white/10 rounded-xl p-4 flex items-center justify-between border border-white/20">
-                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                                       <ArrowRight className="w-5 h-5 text-white" />
-                                    </div>
-                                    <div>
-                                       <p className="text-sm font-bold">Track Package</p>
-                                       <p className="text-xs text-white/70">fedex.com/track/9921</p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div className="mt-4 text-[10px] text-white/70 font-medium text-right">10:25 AM</div>
-                          </div>
-                      </div>
-
-                      {/* Status Toast */}
-                      <div className="absolute top-4 right-4 bg-[#1E293B] text-white p-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-right duration-500 z-30">
-                         <div className="w-7 h-7 bg-brand-500 rounded-full flex items-center justify-center text-white">
-                            <CheckCircle2 className="w-4 h-4" />
-                         </div>
-                         <div>
-                            <p className="text-[11px] font-bold">Message Delivered</p>
-                            <p className="text-[9px] text-slate-400">Read by Sarah just now</p>
-                         </div>
-                      </div>
-                  </div>
-
-                  {/* Input Area */}
-                  <div className="p-6 bg-white border-t border-slate-200 shrink-0">
-                    <div className="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-xl px-5 py-4">
-                       <div className="flex gap-4 text-slate-400 shrink-0">
-                          <Users className="w-5 h-5 cursor-pointer hover:text-slate-600" />
-                       </div>
-                       <input type="text" placeholder="Type a message or / for templates..." className="flex-1 bg-transparent border-none outline-none text-sm text-slate-700 placeholder:text-slate-400" />
-                       <div className="shrink-0">
-                          <button className="bg-brand-500 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/30 hover:bg-brand-600 transition-colors">
-                            <ArrowRight className="w-4 h-4" />
-                          </button>
-                       </div>
-                    </div>
-                    <div className="mt-3 flex justify-between px-1">
-                       <span className="text-[10px] text-slate-400 font-medium">Markdown supported</span>
-                       <span className="text-[10px] text-slate-400 font-medium">Press Enter to send</span>
-                    </div>
-                  </div>
-              </div>
-
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-brand-500" />
+              <span>Official Meta API Suite</span>
             </div>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Right Column: Connected Graphic Section (Phone surrounded by 6 Cards) */}
+        <motion.div 
+          style={{ y: visualY }}
+          className="w-full lg:w-[60%] relative flex flex-col lg:flex-row items-center justify-between gap-6 z-20 scale-[0.92] lg:scale-[0.98] origin-right"
+          initial={{ opacity: 0, x: 35 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          {/* Animated Connecting SVG Paths Behind (Large Screen Only) */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block overflow-visible" viewBox="0 0 1150 600">
+            {/* Left Top Connection */}
+            <path d="M 280 120 C 400 120, 480 200, 480 300" stroke="rgba(1, 184, 75, 0.15)" strokeWidth="2" fill="none" />
+            <circle r="3.5" fill="#01B84B">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 480 300 C 480 200, 400 120, 280 120" />
+            </circle>
+
+            {/* Left Mid Connection */}
+            <path d="M 280 300 L 480 300" stroke="rgba(1, 184, 75, 0.15)" strokeWidth="2" fill="none" />
+            <circle r="3.5" fill="#01B84B">
+              <animateMotion dur="3.5s" repeatCount="indefinite" path="M 480 300 L 280 300" />
+            </circle>
+
+            {/* Left Bottom Connection */}
+            <path d="M 280 480 C 400 480, 480 400, 480 300" stroke="rgba(1, 184, 75, 0.15)" strokeWidth="2" fill="none" />
+            <circle r="3.5" fill="#01B84B">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 480 300 C 480 400, 400 480, 280 480" />
+            </circle>
+
+            {/* Right Top Connection */}
+            <path d="M 870 120 C 750 120, 670 200, 670 300" stroke="rgba(1, 184, 75, 0.15)" strokeWidth="2" fill="none" />
+            <circle r="3.5" fill="#01B84B">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 670 300 C 670 200, 750 120, 870 120" />
+            </circle>
+
+            {/* Right Mid Connection */}
+            <path d="M 870 300 L 670 300" stroke="rgba(1, 184, 75, 0.15)" strokeWidth="2" fill="none" />
+            <circle r="3.5" fill="#01B84B">
+              <animateMotion dur="3.5s" repeatCount="indefinite" path="M 670 300 L 870 300" />
+            </circle>
+
+            {/* Right Bottom Connection */}
+            <path d="M 870 480 C 750 480, 670 400, 670 300" stroke="rgba(1, 184, 75, 0.15)" strokeWidth="2" fill="none" />
+            <circle r="3.5" fill="#01B84B">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 670 300 C 670 400, 750 480, 870 480" />
+            </circle>
+          </svg>
+
+          {/* Left Feature Column (3 Cards) */}
+          <div className="w-full lg:w-[28%] flex flex-col gap-6 z-10 text-left">
+            
+            {/* Card 1: Workflow Automation */}
+            <div className="glass-card bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <Layers className="w-4 h-4" />
+                </div>
+                <h4 className="font-bold text-xs text-white uppercase tracking-wider">Workflow Automation</h4>
+              </div>
+              <div className="flex items-center justify-between bg-slate-950/40 p-2.5 rounded-xl border border-slate-900 text-[10px] text-slate-400">
+                <span className="bg-emerald-500/15 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/10">Trigger</span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-700" />
+                <span className="bg-brand-500/15 text-brand-400 px-2 py-0.5 rounded border border-brand-500/10">Action</span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-700" />
+                <span className="bg-teal-500/15 text-teal-400 px-2 py-0.5 rounded border border-teal-500/10">Result</span>
+              </div>
+            </div>
+
+            {/* Card 2: AI Chatbot 24/7 */}
+            <div className="glass-card bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col gap-2">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <Bot className="w-4 h-4" />
+                </div>
+                <h4 className="font-bold text-xs text-white uppercase tracking-wider">AI Chatbot 24/7</h4>
+              </div>
+              <p className="text-[10px] text-slate-400 leading-relaxed pl-1">
+                Instant Responses. Custom AI intent matching. Seamless agent routing.
+              </p>
+            </div>
+
+            {/* Card 3: WhatsApp Rich Cards */}
+            <div className="glass-card bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <ShoppingBag className="w-4 h-4" />
+                </div>
+                <h4 className="font-bold text-xs text-white uppercase tracking-wider">RCS & Template Rich Cards</h4>
+              </div>
+              <div className="flex gap-2">
+                <div className="flex-1 bg-slate-950/40 border border-slate-900 rounded-lg p-1.5 flex flex-col gap-1 items-center">
+                  <div className="w-full h-8 bg-slate-800/80 rounded" />
+                  <span className="text-[7px] text-slate-300 font-bold scale-95 origin-center">New Arrivals</span>
+                  <span className="text-[6px] text-white bg-brand-500 rounded px-1.5 py-0.5 mt-0.5 scale-90">Shop Now</span>
+                </div>
+                <div className="flex-1 bg-slate-950/40 border border-slate-900 rounded-lg p-1.5 flex flex-col gap-1 items-center">
+                  <div className="w-full h-8 bg-slate-800/80 rounded" />
+                  <span className="text-[7px] text-slate-300 font-bold scale-95 origin-center">Hot Sales</span>
+                  <span className="text-[6px] text-white bg-brand-500 rounded px-1.5 py-0.5 mt-0.5 scale-90">View Deal</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Central 3D Tilted WhatsApp Phone Mockup */}
+          <div 
+            className="w-full lg:w-[38%] shrink-0 relative flex justify-center z-20 group"
+            style={{ perspective: 1200 }}
+          >
+            {/* Ambient Backlight Glow behind Phone */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-[110%] bg-emerald-500/10 blur-[60px] rounded-full pointer-events-none -z-10" />
+
+            <motion.div 
+              className="relative w-full max-w-[280px] h-[510px] bg-slate-900 rounded-[2.5rem] p-2 border-[6px] border-slate-800 shadow-[0_30px_70px_rgba(0,0,0,0.6)] overflow-hidden transition-all duration-500 flex flex-col"
+              style={{ transform: 'rotateY(-12deg) rotateX(6deg)' }}
+              whileHover={{ transform: 'rotateY(0deg) rotateX(0deg) scale(1.02)' }}
+            >
+              {/* Phone Dynamic Island notch */}
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-800 rounded-full z-30" />
+
+              {/* Chat Window Screen */}
+              <div className="flex-1 flex flex-col bg-[#efeae2] text-slate-900 overflow-hidden relative rounded-[2rem] pt-6">
+                
+                {/* Header */}
+                <div className="h-12 bg-[#075e54] text-white flex items-center px-3 gap-2 justify-between shrink-0 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800 font-bold text-xs">
+                      JD
+                    </div>
+                    <div className="text-left">
+                      <div className="font-bold text-[10px] leading-tight">AI Greentick Live</div>
+                      <span className="text-[8px] text-emerald-100 flex items-center gap-1">
+                        <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                        Online via Meta API
+                      </span>
+                    </div>
+                  </div>
+                  <HelpCircle className="w-4 h-4 text-emerald-100" />
+                </div>
+
+                {/* Simulated Chat bubbles */}
+                <div className="flex-1 p-3 flex flex-col justify-end gap-3 text-[10px] pb-4">
+                  
+                  {/* User message */}
+                  <div className="bg-white p-2.5 rounded-lg rounded-tl-none shadow-sm max-w-[85%] self-start text-left">
+                    <p className="font-bold text-[8px] text-slate-400 mb-0.5">Customer</p>
+                    <p className="leading-snug">Hi, is my order #1234 confirmed? 🚚</p>
+                    <span className="block text-[6px] text-slate-400 text-right mt-1">10:41 AM</span>
+                  </div>
+
+                  {/* AI Bot Message */}
+                  <div className="bg-[#dcf8c6] p-2.5 rounded-lg rounded-tr-none shadow-sm max-w-[85%] self-end text-left relative">
+                    <p className="font-bold text-[8px] text-brand-600 mb-0.5">AI Agent</p>
+                    <p className="leading-snug">Yes Sarah! Order #1234 is confirmed and shipped via FedEx. Arriving tomorrow before 2 PM.</p>
+                    
+                    <div className="mt-2 bg-white/70 border border-emerald-100 rounded p-1.5 flex items-center justify-between cursor-pointer">
+                      <span className="font-bold text-[7px] text-emerald-800">Track Packages</span>
+                      <ArrowRight className="w-2.5 h-2.5 text-emerald-600" />
+                    </div>
+                    <span className="block text-[6px] text-slate-400 text-right mt-1">10:42 AM</span>
+                  </div>
+
+                  {/* Bottom Interactive Quick Actions */}
+                  <div className="flex flex-col gap-1.5 mt-2 pt-2 border-t border-slate-300/40">
+                    <div className="bg-white border border-slate-300 rounded-md py-1 text-center font-bold text-[8px] text-slate-600 hover:bg-slate-50 cursor-pointer shadow-sm">
+                      Support
+                    </div>
+                    <div className="bg-white border border-slate-300 rounded-md py-1 text-center font-bold text-[8px] text-slate-600 hover:bg-slate-50 cursor-pointer shadow-sm">
+                      Sales Desk
+                    </div>
+                    <div className="bg-white border border-slate-300 rounded-md py-1 text-center font-bold text-[8px] text-slate-600 hover:bg-slate-50 cursor-pointer shadow-sm">
+                      More Info
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Feature Column (3 Cards) */}
+          <div className="w-full lg:w-[28%] flex flex-col gap-6 z-10 text-left">
+            
+            {/* Card 4: Broadcast Campaigns */}
+            <div className="glass-card bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <Send className="w-4 h-4" />
+                </div>
+                <h4 className="font-bold text-xs text-white uppercase tracking-wider">Broadcast Campaigns</h4>
+              </div>
+              <div className="bg-slate-950/40 border border-slate-900 rounded-xl p-2 flex items-center justify-between">
+                <div className="flex flex-col">
+                  <span className="text-[7px] text-slate-500 uppercase font-bold tracking-wider mb-0.5">Audience Segment</span>
+                  <span className="text-[10px] text-slate-300 font-bold">D2C VIP Clients</span>
+                </div>
+                <span className="text-[9px] bg-brand-500 text-white font-bold px-2 py-0.5 rounded shadow-sm cursor-pointer scale-95 hover:bg-brand-600 transition-colors">Send Now</span>
+              </div>
+            </div>
+
+            {/* Card 5: Analytics Dashboard */}
+            <div className="glass-card bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <BarChart3 className="w-4 h-4" />
+                </div>
+                <h4 className="font-bold text-xs text-white uppercase tracking-wider">Analytics Dashboard</h4>
+              </div>
+              <div className="grid grid-cols-3 gap-1">
+                <div className="bg-slate-950/40 border border-slate-900 rounded-lg p-2 text-center flex flex-col justify-center">
+                  <span className="text-[6px] text-slate-500 font-bold block mb-0.5">Read Rate</span>
+                  <span className="text-[11px] font-extrabold text-emerald-400">+98%</span>
+                </div>
+                <div className="bg-slate-950/40 border border-slate-900 rounded-lg p-2 text-center flex flex-col justify-center">
+                  <span className="text-[6px] text-slate-500 font-bold block mb-0.5">Click rate</span>
+                  <span className="text-[11px] font-extrabold text-teal-400">+45%</span>
+                </div>
+                <div className="bg-slate-950/40 border border-slate-900 rounded-lg p-2 text-center flex flex-col justify-center">
+                  <span className="text-[6px] text-slate-500 font-bold block mb-0.5">Replies</span>
+                  <span className="text-[11px] font-extrabold text-brand-400">12k</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 6: Team Inbox Collaboration */}
+            <div className="glass-card bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <Users className="w-4 h-4" />
+                </div>
+                <h4 className="font-bold text-xs text-white uppercase tracking-wider">Team Collaboration</h4>
+              </div>
+              <div className="flex items-center justify-between bg-slate-950/40 p-2.5 rounded-xl border border-slate-900">
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[6px] text-slate-500 uppercase font-bold tracking-wider leading-none">Shared Inbox</span>
+                  <span className="text-[9px] text-slate-300 font-medium">Assign & Add Notes</span>
+                </div>
+                <div className="flex -space-x-1.5 scale-90">
+                  <div className="w-5 h-5 rounded-full bg-pink-100 border border-slate-900 flex items-center justify-center text-[7px] text-pink-700 font-bold shrink-0">E</div>
+                  <div className="w-5 h-5 rounded-full bg-blue-100 border border-slate-900 flex items-center justify-center text-[7px] text-blue-700 font-bold shrink-0">S</div>
+                  <div className="w-5 h-5 rounded-full bg-purple-100 border border-slate-900 flex items-center justify-center text-[7px] text-purple-700 font-bold shrink-0">M</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </motion.div>
+
       </div>
     </section>
   );

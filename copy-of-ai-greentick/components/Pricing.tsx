@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Check } from 'lucide-react';
 
 interface PricingProps {
@@ -78,79 +79,124 @@ const Pricing: React.FC<PricingProps> = ({ plans: propPlans }) => {
   });
 
   return (
-    <section id="pricing" className="py-24 bg-white relative overflow-hidden">
+    <section id="pricing" className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-brand-glow blur-[120px] pointer-events-none -z-10"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-[24px] md:text-[42px] leading-tight md:leading-[1.2] font-bold text-slate-900 mb-4 tracking-tight">
-            Pricing <span className="bg-[#01B84B] text-white px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">Options</span>
-          </h2>
-          <p className="text-lg text-slate-600">Choose the subscription plan that suits your needs</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-[42px] leading-tight font-extrabold text-slate-900 mb-5 tracking-tight">
+              Pricing <span className="text-transparent bg-clip-text bg-brand-gradient">Options</span>
+            </h2>
+            <p className="text-base text-slate-500 font-light max-w-md mx-auto leading-relaxed">
+              Choose the subscription plan that suits your needs
+            </p>
+          </motion.div>
           
-          <div className="flex justify-center mt-8">
-            <div className="bg-slate-100 p-1.5 rounded-full inline-flex relative items-center">
+          <motion.div 
+            className="flex justify-center mt-10"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="bg-slate-200/60 border border-slate-300/40 p-1 rounded-full inline-flex relative items-center">
               <button 
                 onClick={() => setBillingCycle('monthly')}
-                className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${billingCycle === 'monthly' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`relative px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 z-10 ${
+                  billingCycle === 'monthly' ? 'text-slate-900' : 'text-slate-500 hover:text-slate-800'
+                }`}
               >
+                {billingCycle === 'monthly' && (
+                  <motion.div 
+                    layoutId="active-pricing-pill" 
+                    className="absolute inset-0 bg-white rounded-full -z-10 shadow-sm border border-slate-200/50" 
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
                 Monthly
               </button>
               <button 
                 onClick={() => setBillingCycle('yearly')}
-                className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-1 ${billingCycle === 'yearly' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`relative px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 z-10 flex items-center gap-1 ${
+                  billingCycle === 'yearly' ? 'text-slate-900' : 'text-slate-500 hover:text-slate-800'
+                }`}
               >
-                Annually <span className="text-blue-600 ml-1">Save 20% Off 🔥</span>
+                {billingCycle === 'yearly' && (
+                  <motion.div 
+                    layoutId="active-pricing-pill" 
+                    className="absolute inset-0 bg-white rounded-full -z-10 shadow-sm border border-slate-200/50" 
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                Annually <span className="text-brand-600 bg-brand-50 border border-brand-100 rounded px-1.5 py-0.5 text-[9px] font-extrabold ml-1">Save 20% 🔥</span>
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
           {plans.map((plan, index) => (
-            <div 
+            <motion.div 
               key={index} 
-              className={`flex flex-col p-8 bg-white border rounded-[2rem] h-full relative transition-all duration-300 ${plan.isPrimary ? 'border-brand-200 shadow-xl z-10 md:-translate-y-4' : 'border-slate-200 shadow-sm hover:shadow-lg'}`}
+              className={`flex flex-col p-8 bg-white border rounded-[2.5rem] relative transition-all duration-300 ${
+                plan.isPrimary 
+                  ? 'border-brand-500 shadow-premium z-10 md:-translate-y-4' 
+                  : 'border-slate-200/80 shadow-sm hover:border-slate-300 hover:shadow-premium'
+              }`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
             >
                {plan.badge && (
-                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white px-5 py-1.5 rounded-full text-xs font-medium shadow-lg whitespace-nowrap z-20">
+                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-500 text-white border border-brand-400 px-5 py-1 rounded-full text-[10px] font-extrabold shadow-md uppercase tracking-wider whitespace-nowrap z-20">
                    {plan.badge}
                  </div>
                )}
 
                <div className="mb-8">
-                 <h3 className="text-xl font-medium text-slate-900 mb-2">{plan.name}</h3>
-                 <div className="text-sm text-slate-500 mb-1">Starts at</div>
+                 <h3 className="text-lg font-bold text-slate-900 mb-1">{plan.name}</h3>
+                 <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-3">Starts at</div>
                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-5xl font-bold text-slate-900">
+                    <span className="text-4xl font-extrabold text-slate-900 tracking-tight">
                         {plan.isCustom ? '' : '₹'}{plan.price}
                     </span>
-                    {!plan.isCustom && <span className="text-slate-500 text-sm">{billingCycle === 'monthly' ? '/mo' : '/yr'}</span>}
+                    {!plan.isCustom && <span className="text-slate-400 text-xs font-semibold">{billingCycle === 'monthly' ? '/mo' : '/yr'}</span>}
                  </div>
-                 <p className="text-slate-600 text-sm leading-relaxed min-h-[60px]">{plan.desc}</p>
+                 <p className="text-slate-500 text-xs leading-relaxed min-h-[50px] font-light">{plan.desc}</p>
                </div>
 
-               {/* Standardized Card Button Size */}
-               <button 
-                 className={`w-full py-4 rounded-xl font-bold mb-8 transition-all shadow-sm ${
+               <motion.button 
+                 className={`w-full py-3.5 rounded-xl font-bold text-xs mb-8 transition-all ${
                     plan.isPrimary 
-                        ? 'bg-brand-500 text-white hover:bg-brand-600 shadow-brand-500/20 hover:shadow-lg' 
-                        : 'bg-white text-slate-900 border border-slate-200 hover:border-brand-500 hover:text-brand-600'
+                        ? 'bg-brand-500 text-white hover:bg-brand-600 shadow-lg shadow-brand-500/20' 
+                        : 'bg-slate-50 text-slate-800 border border-slate-200 hover:border-brand-500 hover:bg-white hover:text-brand-600'
                  }`}
+                 whileHover={{ scale: 1.02 }}
+                 whileTap={{ scale: 0.98 }}
                >
                  {plan.button}
-               </button>
+               </motion.button>
 
                <div className="border-t border-slate-100 pt-8 flex-1">
-                 <p className="text-sm font-medium text-slate-900 mb-4">{plan.featuresHeader}</p>
-                 <ul className="space-y-4">
+                 <p className="text-xs font-bold text-slate-900 mb-4 uppercase tracking-wider">{plan.featuresHeader}</p>
+                 <ul className="space-y-3.5">
                    {plan.features.map((feature, i) => (
-                     <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
-                       <Check className="w-5 h-5 text-slate-900 shrink-0" strokeWidth={1.5} />
+                     <li key={i} className="flex items-start gap-3 text-xs text-slate-500 font-light leading-relaxed">
+                       <Check className="w-4 h-4 text-brand-500 shrink-0 mt-0.5" strokeWidth={2.5} />
                        <span>{feature}</span>
                      </li>
                    ))}
                  </ul>
                </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
 import SocialProof from './components/SocialProof.tsx';
@@ -261,6 +262,12 @@ const DEFAULT_FOOTER = {
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'blog' | 'solutions' | 'about' | 'contact' | 'careers' | 'broadcasts' | 'features' | 'compare' | 'admin'>('home');
   
+  // Dynamic Scroll-Linked Parallax transforms for page-wide floating indicators
+  const { scrollY } = useScroll();
+  const floatY1 = useTransform(scrollY, [0, 5000], [0, 500]);
+  const floatY2 = useTransform(scrollY, [0, 5000], [0, -320]);
+  const floatY3 = useTransform(scrollY, [0, 5000], [0, 240]);
+
   const [siteData, setSiteData] = useState<any>({
     hero: DEFAULT_HERO,
     plans: DEFAULT_PLANS,
@@ -331,10 +338,26 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-emerald-100 selection:text-emerald-900">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-emerald-100 selection:text-emerald-900 relative overflow-x-hidden">
       <Navbar currentPage={currentPage} onNavigate={setCurrentPage} onBookDemo={handleBookDemo} />
       
-      <main>
+      {/* Scroll-Linked Floating Futuristic Elements (Parallax) */}
+      <div className="absolute inset-y-0 inset-x-0 overflow-hidden pointer-events-none -z-0">
+        <motion.div 
+          style={{ y: floatY1 }}
+          className="absolute left-[3%] top-[1400px] w-20 h-20 rounded-full border border-emerald-500/10 bg-gradient-to-tr from-emerald-500/5 to-transparent backdrop-blur-[2px] hidden lg:block"
+        />
+        <motion.div 
+          style={{ y: floatY2 }}
+          className="absolute right-[4%] top-[2600px] w-28 h-28 rounded-3xl border border-teal-500/10 bg-gradient-to-br from-teal-500/5 to-transparent backdrop-blur-[1px] rotate-12 hidden lg:block"
+        />
+        <motion.div 
+          style={{ y: floatY3 }}
+          className="absolute left-[2%] top-[4000px] w-36 h-12 rounded-full bg-emerald-500/5 blur-[20px] hidden lg:block"
+        />
+      </div>
+
+      <main className="relative z-10">
         {currentPage === 'home' && (
           <>
             <Hero content={siteData.hero} />

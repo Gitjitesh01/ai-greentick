@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface MetricItem {
   value: string;
@@ -20,30 +21,47 @@ const Metrics: React.FC<MetricsProps> = ({ data }) => {
   const items = data?.items || [];
 
   return (
-    <section id="home-metrics" className="py-20 bg-[#F8F6F2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[24px] md:text-[42px] leading-tight md:leading-[1.2] font-bold text-slate-900 mb-4 tracking-tight">
+    <section id="home-metrics" className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[300px] bg-[radial-gradient(ellipse_at_top,_rgba(1,184,75,0.05)_0%,_transparent_70%)] pointer-events-none -z-10"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          className="text-center mb-20 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-[42px] leading-tight font-extrabold text-slate-900 mb-5 tracking-tight">
             {title.includes("Difference") ? (
               <>
-                See The <span className="bg-[#01B84B] text-white px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">Difference</span> on Your Metrics
+                See The <span className="text-transparent bg-clip-text bg-brand-gradient">Difference</span> on Your Metrics
               </>
             ) : (
               title
             )}
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base text-slate-500 font-light max-w-xl mx-auto leading-relaxed">
             {desc}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {items.map((item, idx) => (
-            <div key={idx} className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm overflow-hidden group">
-              <h3 className="text-4xl font-extrabold text-brand-600 mb-2">{item.value}</h3>
-              <p className="text-xl font-bold text-slate-900 mb-2">{item.label}</p>
-              <p className="text-sm text-slate-600 relative z-10">{item.desc}</p>
-            </div>
+            <motion.div 
+              key={idx} 
+              className="bg-white rounded-[2rem] p-8 border border-slate-200/60 shadow-sm overflow-hidden group hover:border-brand-500/20 hover:shadow-premium transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -3 }}
+            >
+              <h3 className="text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-brand-gradient mb-3 tracking-tight">{item.value}</h3>
+              <p className="text-base font-bold text-slate-900 mb-2">{item.label}</p>
+              <p className="text-xs text-slate-500 leading-relaxed font-light">{item.desc}</p>
+            </motion.div>
           ))}
         </div>
       </div>

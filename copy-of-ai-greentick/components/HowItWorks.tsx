@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Smartphone, MessageSquare, TrendingUp, Rocket } from 'lucide-react';
 
 interface Step {
@@ -16,30 +17,9 @@ interface HowItWorksProps {
 }
 
 const HowItWorks: React.FC<HowItWorksProps> = ({ data }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
   const title = data?.title || "How AI Greentick works";
   const desc = data?.desc || "Getting started with AI Greentick is simple. Your team can start sending campaigns and handling chats in just a few steps.";
   const steps = data?.steps || [];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const getIcon = (idx: number) => {
     switch (idx) {
@@ -52,81 +32,85 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ data }) => {
   };
 
   return (
-    <section id="how-it-works" ref={sectionRef} className="py-24 bg-[#F7F5ED] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-24 lg:py-32 bg-white relative overflow-hidden">
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className={`text-center mb-20 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-[24px] md:text-[42px] leading-tight md:leading-[1.2] font-bold text-slate-900 tracking-tight">
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-[42px] leading-tight font-extrabold text-slate-900 tracking-tight">
             {title.includes("works") ? (
               <>
-                How AI Greentick <span className="bg-[#01B84B] text-white px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">works</span>
+                How AI Greentick <span className="text-transparent bg-clip-text bg-brand-gradient">works</span>
               </>
             ) : (
               title
             )}
           </h2>
-          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-base text-slate-500 max-w-xl mx-auto font-light leading-relaxed">
             {desc}
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative max-w-6xl mx-auto">
           {/* Horizontal Connecting Line (Desktop Only) */}
-          <div className={`hidden md:block absolute top-[156px] left-[10%] right-[10%] h-[1px] bg-slate-300 z-0 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
+          <div className="hidden md:block absolute top-[138px] left-[12%] right-[12%] h-[2px] bg-slate-100 z-0">
+            <motion.div 
+              className="h-full bg-brand-500 origin-left"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, ease: "easeInOut", delay: 0.2 }}
+            />
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
             {steps.map((step, idx) => {
               const StepIcon = getIcon(idx);
               return (
-                <div 
+                <motion.div 
                   key={idx} 
-                  className={`flex flex-col items-center text-center relative z-10 group transition-all duration-700 ease-out`}
-                  style={{ 
-                    transitionDelay: `${idx * 200}ms`,
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(40px)'
-                  }}
+                  className="flex flex-col items-center text-center relative z-10 group"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: idx * 0.15 }}
                 >
                   
-                  {/* Large Icon Circle with Pop Animation */}
-                  <div 
-                    className={`w-24 h-24 rounded-full bg-white flex items-center justify-center mb-10 transition-colors duration-300 group-hover:bg-brand-50 border border-slate-200 group-hover:border-brand-200 shadow-sm ${isVisible ? 'animate-pop-in' : 'opacity-0'}`}
-                    style={{ animationDelay: `${idx * 200 + 300}ms` }}
+                  {/* Large Icon Circle with Hover Effects */}
+                  <motion.div 
+                    className="w-20 h-20 rounded-2xl bg-slate-50 flex items-center justify-center mb-8 border border-slate-200/60 shadow-sm group-hover:border-brand-500/30 group-hover:bg-brand-50/20 group-hover:shadow-premium transition-all duration-300"
+                    whileHover={{ scale: 1.05, rotate: 2 }}
                   >
-                    <StepIcon className="w-10 h-10 text-brand-800 transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
-                  </div>
+                    <StepIcon className="w-8 h-8 text-brand-600 transition-colors group-hover:text-brand-500" strokeWidth={1.5} />
+                  </motion.div>
 
                   {/* Number Badge */}
-                  <div className="w-10 h-10 rounded-full bg-white border border-slate-400 flex items-center justify-center text-slate-600 font-medium text-lg mb-6 shadow-[0_0_0_8px_#F7F5ED] group-hover:border-brand-500 group-hover:text-brand-600 transition-colors relative z-10">
+                  <div className="w-9 h-9 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center text-slate-500 font-bold text-sm mb-5 shadow-[0_0_0_8px_#ffffff] group-hover:border-brand-500 group-hover:text-brand-600 transition-colors relative z-10">
                     {step.number || (idx + 1).toString()}
                   </div>
 
                   {/* Text Content */}
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 px-2">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 px-2">
                     {step.title}
                   </h3>
-                  <p className="text-base text-slate-600 mb-6 max-w-[240px] mx-auto leading-relaxed">
+                  <p className="text-xs text-slate-500 max-w-[220px] mx-auto leading-relaxed font-light">
                     {step.desc}
                   </p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </div>
-      
-      <style>{`
-        @keyframes pop-in {
-          0% { transform: scale(0); opacity: 0; }
-          60% { transform: scale(1.15); opacity: 1; }
-          80% { transform: scale(0.95); opacity: 1; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-        .animate-pop-in {
-          animation: pop-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-      `}</style>
     </section>
   );
 };

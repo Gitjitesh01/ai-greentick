@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Send, Layers, Zap, MessageSquare, BarChart3, Bot, ShoppingBag, Database, Webhook, Check, CheckCircle2, Clock, TrendingUp, Filter } from 'lucide-react';
 
 interface FeatureCard {
@@ -149,17 +150,40 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ onNavigate, data }) => {
     if (idx === 2 || titleLower.includes('chatbot') || titleLower.includes('bot')) {
       return (
         <div className="mt-auto relative h-60 w-full bg-slate-50 border-t border-slate-100 rounded-t-xl overflow-hidden">
+            <style>{`
+              @keyframes pulse-incoming {
+                0%, 100% { border-color: #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+                50% { border-color: #01B84B; box-shadow: 0 4px 15px rgba(1,184,75,0.15); }
+              }
+              @keyframes float-box-l {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-4px); }
+              }
+              @keyframes float-box-r {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-4px); }
+              }
+              @keyframes path-glow {
+                0%, 100% { stroke: #cbd5e1; }
+                50% { stroke: #a7f3d0; }
+              }
+              .animate-pulse-incoming { animation: pulse-incoming 3s infinite; }
+              .animate-float-box-l { animation: float-box-l 3s infinite; }
+              .animate-float-box-r { animation: float-box-r 3s infinite 1.5s; }
+              .animate-path-glow-l { animation: path-glow 3s infinite; }
+              .animate-path-glow-r { animation: path-glow 3s infinite 1.5s; }
+            `}</style>
             <div className="absolute inset-0 opacity-40" 
                  style={{ backgroundImage: 'radial-gradient(#94a3b8 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
             </div>
 
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-full max-w-[280px] h-[180px]">
-                    <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-white border border-slate-200 rounded-xl shadow-sm p-2.5 w-36 z-10 flex items-center gap-2.5 group-hover:border-brand-400 group-hover:shadow-md transition-all duration-300">
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-white border border-slate-200 rounded-xl shadow-sm p-2.5 w-36 z-10 flex items-center gap-2.5 animate-pulse-incoming">
                         <div className="w-7 h-7 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center text-green-600">
                            <MessageSquare className="w-3.5 h-3.5 fill-current" />
                         </div>
-                        <div>
+                        <div className="text-left">
                            <div className="text-[9px] font-bold text-slate-800">Incoming Message</div>
                            <div className="text-[8px] text-slate-500 font-medium">Contains "Pricing"</div>
                         </div>
@@ -168,18 +192,18 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ onNavigate, data }) => {
 
                     <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
                         <path d="M140 50 L140 80" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-                        <path d="M140 80 C 140 90, 80 90, 80 110" stroke="#cbd5e1" strokeWidth="2" fill="none" className="group-hover:stroke-brand-300 transition-colors duration-500" />
-                        <path d="M140 80 C 140 90, 200 90, 200 110" stroke="#cbd5e1" strokeWidth="2" fill="none" className="group-hover:stroke-brand-300 transition-colors duration-500" />
+                        <path d="M140 80 C 140 90, 80 90, 80 110" stroke="#cbd5e1" strokeWidth="2" fill="none" className="animate-path-glow-l" />
+                        <path d="M140 80 C 140 90, 200 90, 200 110" stroke="#cbd5e1" strokeWidth="2" fill="none" className="animate-path-glow-r" />
                         
-                        <circle r="3" fill="#01B84B" className="opacity-0 group-hover:opacity-100">
-                           <animateMotion dur="1.5s" repeatCount="indefinite" path="M140 50 L140 80 C 140 90, 80 90, 80 110" />
+                        <circle r="3.5" fill="#01B84B" className="opacity-100">
+                           <animateMotion dur="2s" repeatCount="indefinite" path="M140 50 L140 80 C 140 90, 80 90, 80 110" />
                         </circle>
-                        <circle r="3" fill="#01B84B" className="opacity-0 group-hover:opacity-100">
-                           <animateMotion dur="1.5s" begin="0.2s" repeatCount="indefinite" path="M140 50 L140 80 C 140 90, 200 90, 200 110" />
+                        <circle r="3.5" fill="#01B84B" className="opacity-100">
+                           <animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M140 50 L140 80 C 140 90, 200 90, 200 110" />
                         </circle>
                     </svg>
 
-                    <div className="absolute top-[110px] left-2 bg-white border border-slate-200 rounded-xl shadow-sm p-2 w-32 z-10 flex items-center gap-2 transform group-hover:-translate-y-1 transition-transform duration-500">
+                    <div className="absolute top-[110px] left-2 bg-white border border-slate-200 rounded-xl shadow-sm p-2 w-32 z-10 flex items-center gap-2 animate-float-box-l text-left">
                         <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white border border-slate-300 rounded-full z-20"></div>
                         <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
                            <Bot className="w-3.5 h-3.5" />
@@ -190,7 +214,7 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ onNavigate, data }) => {
                         </div>
                     </div>
 
-                    <div className="absolute top-[110px] right-2 bg-white border border-slate-200 rounded-xl shadow-sm p-2 w-32 z-10 flex items-center gap-2 transform group-hover:-translate-y-1 transition-transform duration-500 delay-75">
+                    <div className="absolute top-[110px] right-2 bg-white border border-slate-200 rounded-xl shadow-sm p-2 w-32 z-10 flex items-center gap-2 animate-float-box-r text-left">
                         <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white border border-slate-300 rounded-full z-20"></div>
                         <div className="w-7 h-7 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600">
                            <Layers className="w-3.5 h-3.5" />
@@ -343,13 +367,32 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ onNavigate, data }) => {
          </div>
       </div>
     );
+  }
+
+  const getBentoClasses = (idx: number) => {
+    switch (idx) {
+      case 0:
+        return 'lg:col-span-2 md:col-span-2';
+      case 1:
+        return 'lg:col-span-1 md:col-span-1';
+      case 2:
+        return 'lg:col-span-1 md:col-span-1';
+      case 3:
+        return 'lg:col-span-1 md:col-span-1';
+      case 4:
+        return 'lg:col-span-1 md:col-span-1';
+      case 5:
+        return 'lg:col-span-3 md:col-span-2';
+      default:
+        return '';
+    }
   };
 
   return (
-    <section id="features" className="py-20 lg:py-28 bg-gradient-to-b from-[#ecfff4] to-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.4] pointer-events-none" 
+    <section id="features" className="py-24 lg:py-32 bg-gradient-to-b from-[#f4fff9] to-white relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.25] pointer-events-none" 
            style={{ 
-             backgroundImage: 'radial-gradient(#a5b4fc 1.5px, transparent 1.5px)', 
+             backgroundImage: 'radial-gradient(#01B84B 1px, transparent 1px)', 
              backgroundSize: '24px 24px',
              maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
              WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)'
@@ -357,49 +400,63 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ onNavigate, data }) => {
       </div>
       
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[400px] bg-[radial-gradient(ellipse_at_top,_white_0%,_transparent_70%)] opacity-80 pointer-events-none blur-3xl"></div>
-
+ 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-[24px] md:text-[42px] leading-tight md:leading-[1.2] font-bold text-slate-900 mb-4 tracking-tight">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-3xl md:text-4xl lg:text-[42px] leading-tight font-extrabold text-slate-900 mb-5 tracking-tight">
             {title.includes("Win") ? (
               <>
-                Everything You Need To <span className="bg-[#01B84B] text-white px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">Win</span> on WhatsApp
+                Everything You Need To <span className="text-transparent bg-clip-text bg-brand-gradient">Win</span> on WhatsApp
               </>
             ) : (
               title
             )}
           </h2>
-          <p className="text-lg text-slate-600 mb-8">
+          <p className="text-base text-slate-500 font-light max-w-xl mx-auto leading-relaxed">
             {desc}
           </p>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+ 
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
-            <div key={idx} className="bg-white rounded-3xl p-8 pb-0 shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300 group flex flex-col overflow-hidden h-full">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">{feature.title}</h3>
-                <p className="text-base text-slate-600 mb-6 leading-relaxed">
+            <motion.div 
+              key={idx} 
+              className={`bg-white rounded-[2rem] border border-slate-200/60 shadow-sm hover:border-brand-500/20 hover:shadow-premium transition-all duration-300 group flex flex-col justify-between overflow-hidden h-full ${getBentoClasses(idx)}`}
+              whileHover={{ y: -4 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+            >
+              <div className="p-8 pb-0">
+                <h3 className="text-lg font-bold text-slate-900 mb-2.5 tracking-tight group-hover:text-brand-600 transition-colors">{feature.title}</h3>
+                <p className="text-xs text-slate-500 mb-4 leading-relaxed font-light">
                   {feature.desc}
                 </p>
-                <a href="#" onClick={(e) => handleNavigation(idx === 0 ? 'broadcasts' : 'features', e)} className="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700 group-hover:underline">
-                  Learn more <ArrowRight className="ml-1 w-4 h-4" />
+                <a href="#" onClick={(e) => handleNavigation(idx === 0 ? 'broadcasts' : 'features', e)} className="inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-700 group-hover:translate-x-0.5 transition-transform">
+                  Learn more <ArrowRight className="ml-1 w-3.5 h-3.5" />
                 </a>
               </div>
               {renderVisual(idx, feature.title)}
-            </div>
+            </motion.div>
           ))}
         </div>
-
-        <div className="flex justify-center mt-12">
-          <button onClick={(e) => handleNavigation('features', e)} className="bg-brand-500 hover:bg-brand-600 text-white px-8 py-3.5 rounded-full text-base font-bold shadow-lg shadow-brand-500/20 transition-all hover:scale-105 flex items-center gap-2">
-            Explore More <ArrowRight className="w-5 h-5" />
-          </button>
+ 
+        <div className="flex justify-center mt-16">
+          <motion.button 
+            onClick={(e) => handleNavigation('features', e)} 
+            className="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full text-sm font-bold shadow-lg shadow-brand-500/25 flex items-center gap-2"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <span>Explore More Features</span>
+            <ArrowRight className="w-4 h-4" />
+          </motion.button>
         </div>
-
+ 
       </div>
     </section>
   );
 };
-
+ 
 export default KeyFeatures;

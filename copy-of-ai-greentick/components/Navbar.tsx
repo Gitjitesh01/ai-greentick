@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, BadgeCheck, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
   currentPage: 'home' | 'pricing' | 'blog' | 'solutions' | 'about' | 'contact' | 'careers' | 'broadcasts' | 'features' | 'compare' | 'admin';
@@ -39,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onBookDemo }) 
   const useDarkText = isScrolled || !isDarkHero;
 
   const navClass = isScrolled 
-    ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200' 
+    ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200/50' 
     : 'bg-transparent border-b border-transparent';
     
   const textClass = useDarkText ? 'text-slate-700 hover:text-brand-600' : 'text-slate-200 hover:text-white';
@@ -52,12 +53,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onBookDemo }) 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
-          <div className="flex-shrink-0 flex items-center gap-1.5 cursor-pointer" onClick={() => handleNavigation('home')}>
+          <motion.div 
+            className="flex-shrink-0 flex items-center gap-1.5 cursor-pointer" 
+            onClick={() => handleNavigation('home')}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
             <BadgeCheck className="w-9 h-9 text-white fill-brand-500" strokeWidth={2.5} />
             <span className={`font-bold text-2xl tracking-tight transition-colors ${logoClass}`}>
               <span className="text-brand-500">ai</span>Greentick
             </span>
-          </div>
+          </motion.div>
 
           <div className="hidden lg:flex items-center space-x-9">
             <div className="relative group">
@@ -79,10 +85,15 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onBookDemo }) 
           </div>
 
           <div className="hidden lg:flex items-center space-x-4">
-            <button onClick={onBookDemo} className={`text-base font-bold transition-colors ${textClass} px-4`}>Login</button>
-            <button onClick={() => handleNavigation('home', '#pricing')} className="bg-brand-500 hover:bg-brand-600 text-white px-7 py-3 rounded-full text-base font-bold transition-all shadow-md active:scale-95">
+            <button onClick={onBookDemo} className={`text-base font-bold transition-colors ${textClass} px-4 hover:opacity-85`}>Login</button>
+            <motion.button 
+              onClick={() => handleNavigation('home', '#pricing')} 
+              className="bg-brand-500 hover:bg-brand-600 text-white px-7 py-3 rounded-full text-base font-bold transition-all shadow-md"
+              whileHover={{ scale: 1.03, boxShadow: '0 8px 20px rgba(1, 184, 75, 0.3)' }}
+              whileTap={{ scale: 0.97 }}
+            >
               Try for Free
-            </button>
+            </motion.button>
           </div>
 
           <div className="lg:hidden">
@@ -93,19 +104,27 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onBookDemo }) 
         </div>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white absolute w-full shadow-2xl border-b border-slate-200 animate-in slide-in-from-top duration-300">
-          <div className="px-4 pt-4 pb-12 space-y-2">
-            <button onClick={() => handleNavigation('features')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800">Features</button>
-            <button onClick={() => handleNavigation('solutions')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800 border-t border-slate-50">Solutions</button>
-            <button onClick={() => handleNavigation('pricing')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800 border-t border-slate-50">Pricing</button>
-            <button onClick={() => handleNavigation('blog')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800 border-t border-slate-50">Blog</button>
-            <div className="pt-8 flex flex-col gap-4">
-              <button onClick={() => handleNavigation('home', '#pricing')} className="w-full bg-brand-500 text-white py-4 rounded-xl font-bold text-lg">Try for Free</button>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-white absolute w-full shadow-2xl border-b border-slate-200 overflow-hidden"
+          >
+            <div className="px-4 pt-4 pb-12 space-y-2">
+              <button onClick={() => handleNavigation('features')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800">Features</button>
+              <button onClick={() => handleNavigation('solutions')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800 border-t border-slate-50">Solutions</button>
+              <button onClick={() => handleNavigation('pricing')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800 border-t border-slate-50">Pricing</button>
+              <button onClick={() => handleNavigation('blog')} className="block w-full text-left px-4 py-4 text-xl font-bold text-slate-800 border-t border-slate-50">Blog</button>
+              <div className="pt-8 flex flex-col gap-4">
+                <button onClick={() => handleNavigation('home', '#pricing')} className="w-full bg-brand-500 text-white py-4 rounded-xl font-bold text-lg">Try for Free</button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

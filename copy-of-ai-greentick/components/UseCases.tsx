@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight, MessageCircle, Calendar, Check, Star } from 'lucide-react';
 
 interface UseCaseItem {
@@ -17,7 +18,7 @@ interface UseCasesProps {
 
 const METADATA = [
   {
-    color: "bg-brand-50",
+    color: "bg-brand-50/40 border-brand-100",
     accent: "text-brand-600",
     chat: {
       sender: "TravelDealz",
@@ -27,7 +28,7 @@ const METADATA = [
     }
   },
   {
-    color: "bg-blue-50",
+    color: "bg-blue-50/40 border-blue-100",
     accent: "text-blue-600",
     chat: {
       sender: "Star Tuition",
@@ -37,7 +38,7 @@ const METADATA = [
     }
   },
   {
-    color: "bg-amber-50",
+    color: "bg-amber-50/40 border-amber-100",
     accent: "text-amber-600",
     chat: {
       sender: "Sunshine Salon",
@@ -47,7 +48,7 @@ const METADATA = [
     }
   },
   {
-    color: "bg-purple-50",
+    color: "bg-purple-50/40 border-purple-100",
     accent: "text-purple-600",
     chat: {
       sender: "GrowthAgency",
@@ -84,7 +85,7 @@ const UseCases: React.FC<UseCasesProps> = ({ data }) => {
     if (isAutoPlaying && cases.length > 0) {
       interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % cases.length);
-      }, 3000);
+      }, 4000);
     }
     return () => clearInterval(interval);
   }, [isAutoPlaying, cases.length]);
@@ -102,22 +103,28 @@ const UseCases: React.FC<UseCasesProps> = ({ data }) => {
   if (cases.length === 0) return null;
 
   return (
-    <section id="home-use-cases" className="py-20 bg-white overflow-hidden">
+    <section id="home-use-cases" className="py-24 lg:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="text-[24px] md:text-[42px] leading-tight md:leading-[1.2] font-bold text-slate-900 mb-4 tracking-tight">
+        <motion.div 
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-[42px] leading-tight font-extrabold text-slate-900 mb-5 tracking-tight">
             {title.includes("Live") ? (
               <>
-                Built For Teams That <span className="bg-[#01B84B] text-white px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">Live</span> on WhatsApp
+                Built For Teams That <span className="text-transparent bg-clip-text bg-brand-gradient">Live</span> on WhatsApp
               </>
             ) : (
               title
             )}
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base text-slate-500 font-light max-w-xl mx-auto leading-relaxed">
             {desc}
           </p>
-        </div>
+        </motion.div>
 
         {/* Carousel Container */}
         <div className="relative">
@@ -137,9 +144,16 @@ const UseCases: React.FC<UseCasesProps> = ({ data }) => {
                     const itemIndex = (currentIndex + offset) % cases.length;
                     const item = cases[itemIndex];
                     return (
-                        <div key={itemIndex} className="flex-1 min-w-0 animate-in fade-in slide-in-from-right-4 duration-300">
+                        <motion.div 
+                          key={itemIndex} 
+                          className="flex-1 min-w-0"
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: offset * 0.1 }}
+                        >
                              <UseCaseCard item={item} />
-                        </div>
+                        </motion.div>
                     );
                 })}
             </div>
@@ -147,22 +161,32 @@ const UseCases: React.FC<UseCasesProps> = ({ data }) => {
 
           {/* Navigation Buttons (Bottom Center) */}
           {cases.length > 1 && (
-            <div className="flex justify-center items-center gap-4 mt-12">
-              <button 
+            <motion.div 
+              className="flex justify-center items-center gap-4 mt-16"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <motion.button 
                   onClick={prevSlide}
-                  className="w-12 h-12 rounded-full bg-brand-500 hover:bg-brand-600 text-white flex items-center justify-center transition-colors shadow-lg shadow-brand-200"
+                  className="w-11 h-11 rounded-full bg-slate-900 hover:bg-slate-800 text-white flex items-center justify-center transition-colors shadow-sm"
                   aria-label="Previous slide"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
               >
-                  <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button 
+                  <ChevronLeft className="w-5 h-5" />
+              </motion.button>
+              <motion.button 
                   onClick={nextSlide}
-                  className="w-12 h-12 rounded-full bg-brand-500 hover:bg-brand-600 text-white flex items-center justify-center transition-colors shadow-lg shadow-brand-200"
+                  className="w-11 h-11 rounded-full bg-slate-900 hover:bg-slate-800 text-white flex items-center justify-center transition-colors shadow-sm"
                   aria-label="Next slide"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
               >
-                  <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
+                  <ChevronRight className="w-5 h-5" />
+              </motion.button>
+            </motion.div>
           )}
 
         </div>
@@ -173,49 +197,49 @@ const UseCases: React.FC<UseCasesProps> = ({ data }) => {
 
 const UseCaseCard = ({ item }: { item: any }) => {
     return (
-        <div className={`h-full rounded-3xl overflow-hidden ${item.color} hover:shadow-xl transition-shadow duration-300 flex flex-col`}>
-            <div className={`h-64 relative overflow-hidden p-6 flex items-end justify-center ${item.color} group`}>
-                <div className="absolute inset-0 opacity-30" 
-                     style={{ backgroundImage: 'radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+        <div className={`h-full rounded-[2.25rem] overflow-hidden border ${item.color.split(' ')[1]} ${item.color.split(' ')[0]} hover:shadow-premium transition-all duration-300 flex flex-col group`}>
+            <div className="h-64 relative overflow-hidden p-6 flex items-end justify-center">
+                <div className="absolute inset-0 opacity-10" 
+                     style={{ backgroundImage: 'radial-gradient(rgba(0,0,0,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
                 </div>
                 
-                <div className="relative w-full max-w-[260px] bg-white rounded-t-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)] border-[6px] border-b-0 border-slate-900 transform translate-y-8 group-hover:translate-y-4 transition-transform duration-500 overflow-hidden">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-slate-900 rounded-b-xl z-20"></div>
+                <div className="relative w-full max-w-[240px] bg-white rounded-t-[2.25rem] shadow-premium border-[5px] border-b-0 border-slate-950 transform translate-y-8 group-hover:translate-y-4 transition-transform duration-500 overflow-hidden">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-950 rounded-b-xl z-20"></div>
 
-                    <div className="bg-[#075E54] p-3 pt-7 flex items-center gap-3 text-white relative z-10">
-                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm border border-white/30">
-                             <MessageCircle className="w-4 h-4 text-white" />
+                    <div className="bg-[#075E54] p-3 pt-6 flex items-center gap-2.5 text-white relative z-10">
+                        <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm border border-white/30">
+                             <MessageCircle className="w-3.5 h-3.5 text-white" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-xs font-bold truncate">{item.chat.sender}</p>
-                            <p className="text-[9px] text-white/80 flex items-center gap-1">
-                                Business Account <Check className="w-2 h-2" />
+                        <div className="flex-1 min-w-0 text-left">
+                            <p className="text-[10px] font-bold truncate leading-tight">{item.chat.sender}</p>
+                            <p className="text-[8px] text-white/80 flex items-center gap-0.5 leading-none">
+                                Verified <Check className="w-2.5 h-2.5" />
                             </p>
                         </div>
                     </div>
                     
-                    <div className="bg-[#E5DDD5] p-3 h-40 relative overflow-hidden flex flex-col">
-                         <div className="absolute inset-0 opacity-[0.06]" 
+                    <div className="bg-[#E5DDD5] p-3 h-36 relative overflow-hidden flex flex-col justify-end">
+                         <div className="absolute inset-0 opacity-[0.05]" 
                               style={{ backgroundImage: 'url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png")', backgroundSize: '300px' }}>
                          </div>
 
-                         <div className="self-center bg-[#E1F3FB] text-slate-500 text-[9px] px-2 py-0.5 rounded-lg shadow-sm mb-3 font-medium border border-white/50 z-10">
+                         <div className="self-center bg-[#E1F3FB] text-slate-500 text-[8px] px-2 py-0.5 rounded-lg shadow-sm mb-3 font-medium border border-white/50 z-10 uppercase tracking-wide">
                             Today
                          </div>
 
-                         <div className="bg-white p-2.5 rounded-lg rounded-tl-none shadow-sm text-[10px] text-slate-800 leading-snug relative z-10 max-w-[90%] self-start mb-2 group-hover:scale-[1.02] transition-transform duration-300 origin-bottom-left">
+                         <div className="bg-white p-2 rounded-lg rounded-tl-none shadow-sm text-[9px] text-slate-800 leading-relaxed text-left relative z-10 max-w-[90%] self-start mb-2 transition-transform duration-300 origin-bottom-left">
                              {item.chat.message}
-                             <div className="text-[8px] text-slate-400 text-right mt-1 flex items-center justify-end gap-0.5">
+                             <div className="text-[7px] text-slate-400 text-right mt-1">
                                 {item.chat.time}
                              </div>
                          </div>
 
                          {item.chat.cta && (
                              <div className="self-center w-full max-w-[90%] bg-white rounded-lg shadow-sm overflow-hidden z-10 group-hover:shadow-md transition-shadow duration-300">
-                                <div className="p-2 border-b border-slate-100 text-[10px] font-medium text-slate-500 text-center bg-slate-50">
-                                   Select an option
+                                <div className="p-1.5 border-b border-slate-100 text-[8px] font-bold text-slate-400 text-center bg-slate-50 uppercase tracking-wide">
+                                   Interactive Button
                                 </div>
-                                <div className={`p-2.5 text-center text-[10px] font-bold ${item.accent} hover:bg-slate-50 cursor-pointer transition-colors flex items-center justify-center gap-1.5`}>
+                                <div className={`p-2 text-center text-[9px] font-bold ${item.accent} hover:bg-slate-50 cursor-pointer transition-colors flex items-center justify-center gap-1.5`}>
                                    {item.role === "Travel & Hospitality" && <Calendar className="w-3 h-3" />}
                                    {item.role === "Education & EdTech" && <Star className="w-3 h-3" />}
                                    {item.role === "Spa & Salons" && <Calendar className="w-3 h-3" />}
@@ -228,14 +252,16 @@ const UseCaseCard = ({ item }: { item: any }) => {
                 </div>
             </div>
 
-            <div className="p-8 pt-6 flex-1 flex flex-col">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-base text-slate-600 mb-6 leading-relaxed flex-1">
+            <div className="p-8 pt-6 flex-1 flex flex-col bg-white text-left">
+                <span className={`text-[10px] font-extrabold tracking-widest uppercase mb-2 ${item.accent}`}>{item.title}</span>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{item.role}</h3>
+                <p className="text-xs text-slate-500 mb-6 leading-relaxed flex-1 font-light">
                     {item.desc}
                 </p>
                 <div className="mt-auto">
-                    <a href="#" className={`inline-flex items-center text-sm font-bold ${item.accent} hover:underline`}>
-                        Learn more <ArrowRight className="ml-1 w-4 h-4" />
+                    <a href="#" className={`inline-flex items-center text-xs font-bold ${item.accent} hover:underline`}>
+                        <span>Learn more</span> 
+                        <ArrowRight className="ml-1 w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                     </a>
                 </div>
             </div>
